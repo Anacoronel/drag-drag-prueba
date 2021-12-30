@@ -1,0 +1,165 @@
+
+
+  <div class="container">
+       
+    <div class="header">
+                <div class="header_left">
+                <img id="logoarg"src="../assets/imgs/IMG-20211216-WA0013.jpg">
+                </div>
+                <div class="header_right">   
+                <a href="#" id="sns1">  <i class="fa fa-file-pdf-o"></i></a> 
+                <a href="https://github.com/Anacoronel/" id="sns2"><i class="fa fa-github"></i></a>
+                <a href="https://twitter.com/anacoronel" id="sns"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/ana-coronel-90b0901b9/" id="sns3"><i class="fa fa-linkedin"></i></a>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="sign-out">Sign out</button>
+                </div>
+    </div> 
+    
+    <div class="jumbotron text-white jumbotron-image shadow" 
+        style="background-image: url(../assets/imgs/pexels-photo-949587.jpeg);">
+        <h2  id="nombre">
+            <br><br>Ana Coronel
+        </h2>
+        <div class="jumbo-foot"></div>
+    </div>
+
+    
+    
+   
+
+
+    <div>
+        <img class="fotodeperfil" src="https://pbs.twimg.com/profile_images/1382785431436193796/RYIvzD5X_400x400.jpg" alt="fotoperfil">
+        
+    </div>
+    <div id="fullweb">
+        <p class="info" id="info1">  
+             Full web stack Argentina Programa</p>  
+            <p class="info">
+                Ciudad de Buenos Aires</p>
+                <p class="info">
+                    Argentina <a href="#"id="icon1"><i class="fa fa-pencil"></i></a> <br>
+                    <a id="mail"href="mailto:anacoronel@hotmail.com">Mail contacto</a>
+                    
+                </p>
+                
+    </div><div class="agrego">
+    <div><a href="#" id="agregar"><i class="fa fa-plus"></i></a></div></div>
+    
+    
+    <div class="card-group">
+        <div class="card" cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+          <div class="card-body">
+            <h5 class="card-title">Acerca de mi <a href="#"class="icon3"><i class="fa fa-pencil"></i></a>
+                <a href="#"class="icon4"><i class="fa fa-trash"></i></a></h5>
+            <p class="text-muted"><small class="text-muted">Emprendedora. Autodidacta. Siempre dispuesta a superar desafios. Busco resolver problemas y aprender cosas nuevas. Soy paciente, flexible y me gusta compartir lo que se con quienes me rodean.</small>  </p>
+            <p class="card-text"></p>
+          </div>
+        </div>
+        <div class="card" cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+         <div class="card-body">
+            <h5 class="card-title">Hard Skills<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
+                <a href="#"class="icon4"><i class="fa fa-trash"></i></a></h5>
+            <p id="imgstec2"class="card-text">
+                
+                
+                <img id="dos"src="../assets/imgs/html5.png" alt="logo" class="tecno">
+                <img src="../assets/imgs/download.png" alt="logo" class="tecno">
+               
+                <img src="../assets/imgs/mysql.jpg" alt="logo" class="tecno">
+               
+                <img src="../assets/imgs/angular.png" alt="logo" class="tecno">
+                
+                <img src="../assets/imgs/java.png" alt="logo" class="tecno">
+                <img id="sp"src="../assets/imgs/springboot.png" alt="logo" class="tecno">
+               
+                
+                
+            </p>
+            <p class="card-text"><small class="text-muted"></small></p>
+          </div>
+        </div>
+    </div>
+        
+        
+    <div class="card-group">
+                <div class="card"cdkDropList (cdkDropListDropped)="drop($event)">
+                    <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+                 <div class="card-body">
+                    <h5 class="card-title">Proyectos<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h5>
+                    <p id="imgstec"class="card-text">
+                        <img src="../assets/imgs/heroku_logo.png" alt="logo" class="tecno">
+                        <img id="uno"src="../assets/imgs/git.png" alt="logo" class="tecno">
+                <img src="../assets/imgs/codepen.png" alt="logo" class="tecno">
+                <img src="../assets/imgs/stackblitz.png" alt="logo" class="tecno">
+                
+
+
+                    </p>
+                    <p class="card-text"><small class="text-muted"></small></p>
+                  </div>
+                </div>
+                <div class="card"cdkDropList (cdkDropListDropped)="drop($event)">
+                    <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+                  <div class="card-body">
+                    <h5 class="card-title">Educacion<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h5>
+                    <p class="card-text"id="edu">
+                        <!--<div class="row">-->
+                        <div class="logouni"><img src="../assets/imgs/Logo-USAL.jpg" alt="" class="logouni"></div>
+                        <div class>
+                        <p class="card-text"><small class="text-muted"id="edu1">Lic en Turismo<br>1991-1995</small></p>
+                        <div class>
+                        <div class="logoargp"><img src="../assets/imgs/IMG-20211216-WA0013.jpg" alt="" class="logoargp"></div></div>
+
+                      
+                    <p class="card-text"><small class="text-muted"id="edu2">Full web stack jr.<br>2021-2022</small></p></div></div>
+                 
+                </div>
+    </div>
+                
+    <div class="card-group">
+        <div class="card"cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+            <div class="card-body">
+                <h5 class="card-title">Experiencia<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h5>
+                    <p class="card-text">
+                        </p>
+                    <p class="card-text"><small class="text-muted"><ul class="list">
+                        <li>Desarrollo web 2021-2022
+                        2020-2022</li>
+                        <li>Administrativa contable 
+                        2000- actualidad</li>
+                        <li>Secretaria Ejecutiva
+                        1997-2000</li>
+                        </ul>
+                </small></p>
+            </div>
+        </div>
+        <div class="card"cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="example-box border" *ngFor="let movie of movies" cdkDrag></div>
+            <div class="card-body">
+                <h5 class="card-title">Idiomas<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h5>
+                    <p class="card-text"></p>
+                    <p class="card-text"><small class="text-muted">
+                        <p>Ingles B2/C1 </p>
+                        <p>Portugues. Frances. Aleman. Nivel A1/A2</p>
+                        
+                        
+
+                    </small></p>
+            </div>
+        </div>
+    </div>
+        <footer>
+            <div id="footer1">
+            </div>
+            <div id="footer2">
+            </div>
+        </footer>
+</div>

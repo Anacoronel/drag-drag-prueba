@@ -1,0 +1,19 @@
+/*.jumbo-foot{
+  display: flex;
+  background-color: #383838; 
+  border-bottom: 20px solid #383838; 
+}
+*/
+
+#fullweb{
+    margin-bottom: -2rem;
+    padding-bottom: -2rem;
+    border-right: 1px solid rgba(0,0,0,.125);
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+.agrego{
+    border-right: 1px solid rgba(0,0,0,.125);
+    border-left: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
