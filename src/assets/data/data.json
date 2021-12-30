@@ -1,0 +1,127 @@
+{
+  "nombre":"Ana Coronel",
+  "img":"https://pbs.twimg.com/profile_images/1382785431436193796/RYIvzD5X_400x400.jpg",
+  "backgroundimg":"../assets/imgs/pexels-photo-949587.jpeg",
+  "ocupacion":"Full stack web developer",
+  "ubicacion":"Ciudad de Buenos Aires",
+  "pais":"Argentina",
+  "mail":"anacoronel@hotmail.com",
+  "quote1":"Anyone who stops learning is old, whether at twenty or eighty.",
+  "by":"Henry Ford",
+  "quote2":"Anyone who keeps learning stays young.The greatest thing in life is to keep your mind young.",
+  "educacion":[
+    
+      {
+          
+           "nombre": "Argentina Programa #YoProgramo",
+           "titulo":"Full Web Stack",
+           "img":"../assets/imgs/IMG-20211216-WA0013.jpg",
+           "inicio":"Agosto 2020",
+           "fin":"Mayo 2021"
+      },
+   {
+          
+          "nombre":"Universidad del Salvador",
+          "titulo":"Lic. en Turismo",
+          "img":"../assets/imgs/Logo-USAL.jpg",
+          "inicio": "marzo 1991", 
+          "fin":"Diciembre 1995"
+
+      }
+  ],
+  "acerca":"Lic. en Turismo, ahora formandome en desarrollo web full stack a traves de Argentina Programa",
+  "experiencia":[
+      {
+          
+          "nombre":"Desarrollo web",
+          "lugar":"Argentina Programa 1 y 2 ",
+          "inicio":"Agosto 2020",
+          "fin":"Mayo 2021"
+      },
+  
+      
+      {
+          "nombre":"Secretaria Ejecutiva",
+          "lugar":"Industrias Pugliese SA",
+          "inicio":"1997",
+          "fin":"2000"
+      },
+          
+
+      {
+          "nombre":"administrativa",
+          "lugar":"Laboratorio Dental",
+          "inicio":"Marzo 2001",
+          "fin":"Mayo 2015"
+      }
+      
+  ],
+  
+  "idiomas":[
+      {
+          "idioma":"Ingles",
+          "nivel":"Avanzado B2/C1"
+
+
+      },
+      {
+          "idioma":"Portugues",
+          "nivel":"Basico"
+      },
+      {
+          "idioma":"Aleman",
+          "nivel":"Basico"
+      },{
+          "idioma":"Frances",
+          "nivel":"Basico"
+      }
+
+  ],
+  "proyectos":[
+      {
+          "app":"Cv editable",
+          "link":"url"
+      },
+      {
+          "app":"Task List",
+          "link":"url"
+      },
+
+      {
+          "app":"Calculadora",
+          "link":"url"
+      },
+      {
+          "app":"Pagina html",
+          "link":"url"
+      }
+  ],
+  "skills":[
+      {"Html y css":"../assets/imgs/html5.png"
+
+      },
+      {"bootstrap":"../assets/imgs/download.png"
+
+      },
+      
+      {
+          "Java":"../assets/imgs/java.png"
+      },
+      {
+          "MySQl":"../assets/imgs/mysql.jpg"
+      },
+      {
+          "Angular":"img"
+      },
+      {
+          "Springboot":"../assets/imgs/springboot.png"
+      }
+
+  ]
+
+  
+}
+
+
+
+
