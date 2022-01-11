@@ -15,9 +15,9 @@ export class AppHeaderComponent implements OnInit {
 
   
     ngOnInit(): void {
-      this.datosPortfolio.obtenerDatos()//.subscribe(data =>{console.log(data);
-     //   this.miPortfolio=data[0];
-   // });
+      this.datosPortfolio.obtenerDatos().subscribe(data =>{console.log(data);
+       this.miPortfolio=data[0];
+    });
     }
   
 
