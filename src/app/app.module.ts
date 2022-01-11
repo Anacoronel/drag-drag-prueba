@@ -8,6 +8,9 @@ import { DragAndDropManagerDirective } from './drag-and-drop-manager.directive';
 import { EducExpComponent } from './componentes/educ-exp/educ-exp.component';
 import { ProyectosSkillsComponent } from './componentes/proyectos-skills/proyectos-skills.component';
 import { SobremiComponent } from './componentes/sobremi/sobremi.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,8 +23,11 @@ import { SobremiComponent } from './componentes/sobremi/sobremi.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
     DragDropModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
+    
     
   ],
   providers: [],
