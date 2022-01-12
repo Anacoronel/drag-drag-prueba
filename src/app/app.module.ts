@@ -23,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PortfolioService } from './servicios/portfolio.service';
 import { RouterModule } from '@angular/router';
 import { AddComponent } from './componentes/educ-exp/add/add.component';
+import { AddEduComponent } from './componentes/educ-exp/add-edu/add-edu.component';
+import { UiService } from './servicios/ui.service';
+import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-proy.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { AddComponent } from './componentes/educ-exp/add/add.component';
     EducExpComponent,
     ProyectosSkillsComponent,
     SobremiComponent,
-    AddComponent
+    AddComponent,
+    AddEduComponent,
+    AddProyComponent
   ],
   imports: [
     //RouterModule.forRoot(appRoutes, {enableTracing: true}
@@ -50,7 +55,7 @@ import { AddComponent } from './componentes/educ-exp/add/add.component';
     
     
   ],
-  providers: [PortfolioService//,{
+  providers: [PortfolioService, UiService//,{
    // provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
  // }
 ],

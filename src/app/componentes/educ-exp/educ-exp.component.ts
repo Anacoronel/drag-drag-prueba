@@ -19,10 +19,14 @@ export class EducExpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.portfolioService.obtenerDatos().subscribe(data =>{console.log(data);
-      this.portfolioService=data[0];
-   });
-  }
+    
+  
+  this.portfolioService.obtenerEdu().subscribe(edu =>{console.log(edu);
+    this.edu=edu;
+ });
+ this.portfolioService.obtenerExp().subscribe(exp =>{console.log(exp);
+  this.exp=exp;
+});}
   /*this.taskService.getTasks().subscribe((tasks) => 
      {this.tasks=tasks}
     );

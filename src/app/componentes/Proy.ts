@@ -1,6 +1,5 @@
-export interface Exp {
+export interface Proy {
     id: any;
-    empresa: string;
     date: string;
     link: string;
     puesto: string;

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpHandler, HttpHeaderResponse} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { Exp } from '../componentes/educ-exp/Exp';
+import { Edu } from '../componentes/educ-exp/Edu';
+import {Skill} from '../componentes/Skill';
+import {Proy} from '../componentes/Proy';
 
 
 
@@ -8,13 +12,27 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class PortfolioService {
-  apiUrl:string='http://localhost:8080';
+  apiUrl:string ='http://localhost:8080';
 
   constructor(private http:HttpClient) {}
   
-  obtenerDatos():Observable<any> {
+  obtenerDatos():Observable<any>{
   return this.http.get(this.apiUrl + "/persona");
   }
+
+  obtenerEdu():Observable<Edu[]>{
+    return this.http.get<Edu[]>(this.apiUrl + "/educacion");
+  }
+ obtenerExp():Observable<Exp[]>{
+ return this.http.get<Exp[]>(this.apiUrl + "/experiencia");
+}
+
+obtenerProy():Observable<Proy[]>{
+  return this.http.get<Proy[]>(this.apiUrl + "/proyecto");
+ }
+ obtenerSkills():Observable<Skill[]>{
+  return this.http.get<Skill[]>(this.apiUrl + "/skill");
+ }
  /* getTasks():Observable<Task[]>{
     return this.http.get<Task[]>(this.apiUrl)
   }

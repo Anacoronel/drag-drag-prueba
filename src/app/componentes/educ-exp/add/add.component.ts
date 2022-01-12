@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {UiService} from '../../../servicios/ui.service';
-import {Edu} from '../Edu';
 import {Exp}from '../Exp'
 
 @Component({
@@ -11,48 +11,34 @@ import {Exp}from '../Exp'
 })
 export class AddComponent implements OnInit {
   @Input() exp: Exp[] = [];
-  @Input() edu: Edu[] = [];
 
-  @Output() onAddEdu: EventEmitter<Edu> = new EventEmitter();
   @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
-
-
-
+  
   id: any;
-  text: string = "";
-  day: string = "";
-  reminder: boolean = false;
-  showAddTask: boolean = false;
-  subscription?:Subscription;
+  empresa: string="";
+  date: string = "";
+  link: string = "";
+  puesto: string= "";
+  persona_id: any;
 
+    
   constructor(
-    private uiService: UiService
+    private portfolioService: PortfolioService
 
   ) { }
 
   ngOnInit(): void {
   }
 
-  onSubmitEdu() {
-    if(this.text.length === 0) {
-      alert("Please add a Text!");
-      return
-   }
   
-  const {id,text, day, reminder} = this
-  const newEdu ={id,text, day, reminder}
-
-  this.onAddEdu.emit(newEdu);
-
-  }
   onSubmitExp() {
-    if(this.text.length === 0) {
+   /* if(this.text.length === 0) {
       alert("Please add a Text!");
       return
-   }
+   }*/
   
-  const {id,text, day, reminder} = this
-  const newExp ={id,text, day, reminder}
+ const {id,empresa, date, link, puesto, persona_id} = this
+  const newExp ={id,empresa, date, link, puesto, persona_id}
 
   this.onAddExp.emit(newExp);
 
