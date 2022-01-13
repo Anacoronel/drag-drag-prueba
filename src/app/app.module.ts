@@ -26,6 +26,7 @@ import { AddComponent } from './componentes/educ-exp/add/add.component';
 import { AddEduComponent } from './componentes/educ-exp/add-edu/add-edu.component';
 import { UiService } from './servicios/ui.service';
 import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-proy.component';
+import { AddskillComponent } from './componentes/proyectos-skills/addskill/addskill.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,10 @@ import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-pr
     SobremiComponent,
     AddComponent,
     AddEduComponent,
-    AddProyComponent
+    AddProyComponent,
+    AddskillComponent
+    
+
   ],
   imports: [
     //RouterModule.forRoot(appRoutes, {enableTracing: true}
@@ -50,6 +54,7 @@ import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-pr
     MatCardModule, MatCheckboxModule,
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule
+    
 
    
     

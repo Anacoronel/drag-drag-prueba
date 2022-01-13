@@ -31,5 +31,11 @@ export class EducExpComponent implements OnInit {
      {this.tasks=tasks}
     );
    */
+    deleteEdu(edu: Edu){
+      this.portfolioService.deleteEdu(edu).subscribe(()=>{
+        this.edu = this.edu.filter( e => e.id !== edu.id)
+      })
+  
+    }
 
 }

@@ -33,6 +33,13 @@ obtenerProy():Observable<Proy[]>{
  obtenerSkills():Observable<Skill[]>{
   return this.http.get<Skill[]>(this.apiUrl + "/skill");
  }
+
+ deleteEdu(edu: Edu): Observable<Edu>{
+  const url = `${this.apiUrl+ "/educacion/delete"}/${edu.id}`
+  return this.http.delete<Edu>(url)
+
+}
+
  /* getTasks():Observable<Task[]>{
     return this.http.get<Task[]>(this.apiUrl)
   }

@@ -6,17 +6,34 @@ import {Observable, Subject} from 'rxjs';
   providedIn: 'root'
 })
 export class UiService {
-  private showAddTask: boolean = false;
+  private showAddEdu: boolean = false;
   private subject = new Subject<any>();
+
+  private showAddExp: boolean = false;
+  private exp = new Subject<any>();
 
 
   constructor() { }
-  toggleAddTask(): void{
-    this.showAddTask = !this.showAddTask;
-    this.subject.next(this.showAddTask);
+  toggleAddEdu(): void{
+    this.showAddEdu = !this.showAddEdu;
+    this.subject.next(this.showAddEdu);
   }
   
   onToggle():Observable<any>{
     return this.subject.asObservable(); 
+
   }
+
+  toggleAddExp(): void{
+    this.showAddExp = !this.showAddExp;
+    this.exp.next(this.showAddExp);
+  }
+  
+  onToggleExp():Observable<any>{
+    return this.exp.asObservable(); 
+  }
+
 }
+
+
+

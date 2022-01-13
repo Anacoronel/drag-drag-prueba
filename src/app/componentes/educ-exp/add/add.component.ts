@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { TransitionCheckState } from '@angular/material/checkbox';
 import { Subscription } from 'rxjs';
-import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {UiService} from '../../../servicios/ui.service';
-import {Exp}from '../Exp'
+import {Exp}from '../Exp';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-add',
@@ -13,38 +15,47 @@ export class AddComponent implements OnInit {
   @Input() exp: Exp[] = [];
 
   @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
-  
+  @Output() onDeleteExp: EventEmitter<Exp> =new EventEmitter();
+   
+
   id: any;
   empresa: string="";
   date: string = "";
   link: string = "";
   puesto: string= "";
   persona_id: any;
+  showAddExp: boolean = false;
+  subscription?:Subscription;
 
     
   constructor(
-    private portfolioService: PortfolioService
+    private uiService : UiService
 
-  ) { }
-
+  ) {this.subscription = this.uiService.onToggleExp()
+    .subscribe(value => this.showAddExp = value) }
   ngOnInit(): void {
   }
 
   
-  onSubmitExp() {
+  onSubmit() {
    /* if(this.text.length === 0) {
       alert("Please add a Text!");
       return
-   }*/
+   }*/console.log("addexp");
   
  const {id,empresa, date, link, puesto, persona_id} = this
   const newExp ={id,empresa, date, link, puesto, persona_id}
 
   this.onAddExp.emit(newExp);
+  }
+  onDelete(){
+    console.log("delexp");
+    this.onDeleteExp.emit();
+  }
 
   }
 
 
 
 
-}
+
