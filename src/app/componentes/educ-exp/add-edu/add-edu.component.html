@@ -1,3 +1,28 @@
-<p>add-edu works!</p>
-<button type="button" class="btn btn-primary" (click)="onDelete()">Primary</button>
-<button type="button" class="btn btn-primary" (click)="onSubmit()">Primary</button>
+<div class="container">
+<form class="add-form">
+    <div class="form-control m-b3">
+
+        <label for="text">id</label>
+        <input class ="form-control" type="text" name="text" id="text"placeholder="id" [(ngModel)]="id">     
+        <label for="fecha">fecha</label>
+        <input class ="form-control"type="text" name="fecha" id="fecha" placeholder="fecha" [(ngModel)]="fecha" >     
+        <label for="inst">inst</label>
+        <input class ="form-control"type="text" name="inst" id="text" placeholder="institucion"[(ngModel)]="institucion" >     
+    
+        <label for="text">link</label>
+        <input class ="form-control" type="text" name="text" id="text"placeholder="id" [(ngModel)]="link">     
+        <label for="day">titulo</label>
+        <input class ="form-control" type="text" name="Day" id="day" placeholder="Titulo" [(ngModel)]="titulo" >     
+
+        <label for="day">id</label>
+        <input class ="form-control"type="text" name="Day" id="day" placeholder="Persona" [(ngModel)]="persona_id" >     
+    </div>
+</form>
+
+    
+
+<button type="button" class="btn btn-primary" (click)="onDelete()">borrar</button>
+<button type="button" class="btn btn-primary" (click)="onSubmit()">enviar</button>
+<button type="button" class="btn btn-primary" (click)="onEdit(id)">editar</button>
+</div>
+

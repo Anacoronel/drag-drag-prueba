@@ -1,0 +1,25 @@
+.circle-progress {
+    text-align: center;
+    position: relative;
+
+}
+      .path-fg {
+        fill: #3886EA;
+      }
+    
+
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+      .title {
+        font-size: 42pt;
+      }
+      
+    

@@ -26,16 +26,31 @@ export class EducExpComponent implements OnInit {
  });
  this.portfolioService.obtenerExp().subscribe(exp =>{console.log(exp);
   this.exp=exp;
-});}
-  /*this.taskService.getTasks().subscribe((tasks) => 
-     {this.tasks=tasks}
-    );
-   */
-    deleteEdu(edu: Edu){
-      this.portfolioService.deleteEdu(edu).subscribe(()=>{
-        this.edu = this.edu.filter( e => e.id !== edu.id)
+})}
+  
+    deleteEdu(id: number){
+      this.portfolioService.deleteEdu(id).subscribe((edu)=>{
+       console.log(edu);
+        this.portfolioService.obtenerEdu();
       })
   
     }
+    deleteExp(id:number){
+      this.portfolioService.deleteExp(id).subscribe((dato)=>{
+        console.log(dato);
+         this.portfolioService.obtenerExp();
+      })
+  
+    }
+    editEdu(edu:Edu){
+      this.portfolioService.editEdu(edu).subscribe((edu)=>{
+        console.log(edu);
+        this.portfolioService.obtenerEdu();
+
+        
+
+      })
+    }
+
 
 }

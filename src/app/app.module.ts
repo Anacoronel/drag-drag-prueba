@@ -16,7 +16,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {FormsModule} from '@angular/forms';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,8 @@ import { AddEduComponent } from './componentes/educ-exp/add-edu/add-edu.componen
 import { UiService } from './servicios/ui.service';
 import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-proy.component';
 import { AddskillComponent } from './componentes/proyectos-skills/addskill/addskill.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { AddskillComponent } from './componentes/proyectos-skills/addskill/addsk
     AddComponent,
     AddEduComponent,
     AddProyComponent,
-    AddskillComponent
+    AddskillComponent,
+    LoginComponent,
+    PortfolioComponent
     
 
   ],
@@ -53,7 +57,8 @@ import { AddskillComponent } from './componentes/proyectos-skills/addskill/addsk
     BrowserAnimationsModule,
     MatCardModule, MatCheckboxModule,
     MatButtonModule,MatButtonToggleModule,
-    MatIconModule, MatListModule, MatProgressSpinnerModule
+    MatIconModule, MatListModule, MatProgressSpinnerModule,
+    FormsModule
     
 
    
@@ -67,3 +72,4 @@ import { AddskillComponent } from './componentes/proyectos-skills/addskill/addsk
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
