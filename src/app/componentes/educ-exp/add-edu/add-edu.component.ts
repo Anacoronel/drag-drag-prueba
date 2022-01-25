@@ -4,7 +4,8 @@ import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {UiService} from '../../../servicios/ui.service';
 import {Edu} from '../Edu';
-
+import { MatTableModule } from '@angular/material/table';
+import { DataSource } from '@angular/cdk/collections';
 
 
 @Component({
@@ -27,15 +28,18 @@ export class AddEduComponent implements OnInit {
   persona_id: any;
   showAddEdu: boolean = false;
   subscription?:Subscription;
+  MatTable:any;
+  displayedColumns: string[] = ['institucion', 'link', 'fecha', 'titulo', 'select'];
 
-
-  constructor(     private uiService: UiService,  private portfolioService:PortfolioService, private router:Router
-    ) { this.subscription = this.uiService.onToggle()
-      .subscribe(value => this.showAddEdu = value) }
+  constructor(       private portfolioService:PortfolioService, private router:Router
+    ) { this.portfolioService.obtenerEdu().subscribe(edu =>{console.log(edu);
+      this.edu=edu;
+   });}
 
   ngOnInit(): void {
   }
 onSubmit() {
+  
    
   console.log("submitedu", this.edu);
  const {id,institucion, fecha, link, titulo, persona_id} = this
@@ -47,17 +51,17 @@ onSubmit() {
   
   }
   
-  onDelete(){
+  onDelete(id: number){
     console.log("deledu");
     this.onDeleteEdu.emit();
     this.deleteEdu(this.id);
   }
   onEdit(id:number){
-    const {institucion, fecha, link, titulo, persona_id} = this
+    const { institucion, fecha, link, titulo, persona_id} = this
     const newEdu = {id, institucion, fecha, link, titulo, persona_id}
     console.log("editedu");
     this.onEditEdu.emit(newEdu);
-    this.portfolioService.editEdu(newEdu).subscribe(dato =>{console.log(dato);
+    this.portfolioService.editEdu(this.id).subscribe(edu =>{console.log(edu);
     }) ;
   }
   
@@ -82,3 +86,5 @@ onSubmit() {
 
 
 }
+/*new MatTableDataSource<any>(ELEMENT_DATA)
+ */

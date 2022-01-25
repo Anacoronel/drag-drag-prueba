@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -16,6 +17,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {CdkTableModule} from '@angular/cdk/table';
 import {FormsModule} from '@angular/forms';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -48,7 +50,7 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
 
   ],
   imports: [
-    //RouterModule.forRoot(appRoutes, {enableTracing: true}
+   // RouterModule.forRoot(appRoutes, {enableTracing: true}
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
@@ -58,7 +60,8 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
     MatCardModule, MatCheckboxModule,
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,CdkTableModule, MatTableModule
+     
     
 
    
