@@ -37,13 +37,8 @@ deleteEdu(edu:Edu){
 
 }
   
-   /* deleteEdu(edu:Edu){
-      this.portfolioService.deleteEdu(edu).subscribe((edu)=>{
-       console.log(edu);
-        this.portfolioService.obtenerEdu();
-      })
-  
-    }*/
+   
+    
     deleteExp(id:number){
       this.portfolioService.deleteExp(id).subscribe((dato)=>{
         console.log(dato);

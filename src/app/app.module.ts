@@ -31,6 +31,7 @@ import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-pr
 import { AddskillComponent } from './componentes/proyectos-skills/addskill/addskill.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
+import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
     AddProyComponent,
     AddskillComponent,
     LoginComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    FormEduComponent
     
 
   ],
