@@ -56,11 +56,13 @@ editEdu( edu:Edu): Observable<any>{
   return this.http.put<any>(`${this.apiUrl + '/educacion/edit/'}${edu.id}`,edu, httpOptions);
 }
 
-
-
- deleteEdu(id:number):Observable<any>{
+deleteEdu(edu: Edu | number): Observable<Edu> {
+  const id = typeof edu === 'number' ? edu : edu.id;
   const url = `${this.apiUrl+ '/educacion/delete'}/${id}`;
-  return this.http.delete<any>(url);
+
+ /*deleteEdu(edu:Edu):Observable<any>{
+  const url = `${this.apiUrl+ '/educacion/delete'}/${edu.id}`;*/
+  return this.http.delete<any>(url, httpOptions);
    
   }
 

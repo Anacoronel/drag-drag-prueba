@@ -35,10 +35,10 @@
                                       </ng-container>
                                       <ng-container matColumnDef="select">
                                         <th mat-header-cell *matHeaderCellDef> Accion </th>
-                                        <td mat-cell *matCellDef="let row"><!--<i (click)="onEdit()" class="fa fa-edit"></i>
+                                        <td mat-cell *matCellDef="let edu"><!--<i (click)="onEdit()" class="fa fa-edit"></i>
                                             <i (click)="onDelete()" class="fa fa-trash"></i>-->
                                             <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-                                              <mat-icon (click)="onDelete(id)">delete</mat-icon>
+                                              <mat-icon (click)="onDelete(edu)">delete</mat-icon>
                                             </button>
                                             <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
                                               <mat-icon (click)="onEdit(id)">edit</mat-icon>

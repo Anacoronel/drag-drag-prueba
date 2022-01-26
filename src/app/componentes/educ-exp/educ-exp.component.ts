@@ -27,14 +27,23 @@ export class EducExpComponent implements OnInit {
  this.portfolioService.obtenerExp().subscribe(exp =>{console.log(exp);
   this.exp=exp;
 })}
+deleteEdu(edu:Edu){
   
-    deleteEdu(id: number){
-      this.portfolioService.deleteEdu(id).subscribe((edu)=>{
+   console.log(edu)
+   this.portfolioService.deleteEdu(edu).subscribe(()=>{
+   this.edu = this.edu.filter( t => t.id !== edu.id) 
+    
+  })
+
+}
+  
+   /* deleteEdu(edu:Edu){
+      this.portfolioService.deleteEdu(edu).subscribe((edu)=>{
        console.log(edu);
         this.portfolioService.obtenerEdu();
       })
   
-    }
+    }*/
     deleteExp(id:number){
       this.portfolioService.deleteExp(id).subscribe((dato)=>{
         console.log(dato);

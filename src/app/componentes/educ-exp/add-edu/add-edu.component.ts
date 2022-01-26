@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
@@ -6,6 +6,7 @@ import {UiService} from '../../../servicios/ui.service';
 import {Edu} from '../Edu';
 import { MatTableModule } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/collections';
+
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AddEduComponent implements OnInit {
   @Output() onEditEdu: EventEmitter<Edu> = new EventEmitter();
 
 
-  id: any;
+  id:any;
   institucion: string ="";
   fecha: string = "";
   link: string = "";
@@ -51,28 +52,53 @@ onSubmit() {
   
   }
   
-  onDelete(id: number){
+  onDelete(edu:Edu){
     console.log("deledu");
-    this.onDeleteEdu.emit();
-    this.deleteEdu(this.id);
+    this.onDeleteEdu.emit(edu);
+
+    this.deleteEdu(edu);
+
   }
-  onEdit(id:number){
+  onEdit(id:any){
     const { institucion, fecha, link, titulo, persona_id} = this
     const newEdu = {id, institucion, fecha, link, titulo, persona_id}
     console.log("editedu");
     this.onEditEdu.emit(newEdu);
-    this.portfolioService.editEdu(this.id).subscribe(edu =>{console.log(edu);
+    this.portfolioService.editEdu(newEdu).subscribe(edu =>{console.log(edu);
     }) ;
   }
   
-  /*this.taskService.getTasks().subscribe((tasks) => 
-     {this.tasks=tasks}
-    );
-   */
-    deleteEdu(id: number){
-      this.portfolioService.deleteEdu(id).subscribe((edu)=>{
+  /*this.taskService.getTasks().subscribe((tasks) =>
+    /* {this.tasks=tasks}
+    );*/
+    /*delete(hero: Hero): void {
+  this.heroes = this.heroes.filter(h => h !== hero);
+  this.heroService.deleteHero(hero).subscribe();
+} */
+    deleteEdu( edu:Edu):void{
+  
+      console.log(edu.id );this.edu=this.edu.filter(e=> e !== edu);
+      this.portfolioService.deleteEdu(edu).subscribe();
+
+
+      /*this.portfolioService.deleteEdu(edu.id).subscribe(()=>{
+       this.edu=this.edu.filter( t => t.id !== t.id) 
+       */
+     }
+   
+   }
+  
+    
+
+function newEdu(newEdu: any) {
+  throw new Error('Function not implemented.');
+}
+   /* deleteEdu(edu:Edu){
+      this.portfolioService.deleteEdu(edu.id).subscribe((edu)=>{
        console.log(edu);
-        this.portfolioService.obtenerEdu();
+       /*this.taskService.deleteTask(task).subscribe(()=>{
+       this.tasks = this.tasks.filter( t => t.id !== task.id) 
+        this.edu= this.edu;
       })
   
     }
