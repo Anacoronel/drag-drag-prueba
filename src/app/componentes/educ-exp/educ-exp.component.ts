@@ -11,11 +11,9 @@ import {PortfolioService} from './../../servicios/portfolio.service'
 export class EducExpComponent implements OnInit {
   exp:Exp[] = [];
   edu:Edu[] = [];
-
-
+  
   constructor(
-    private portfolioService:PortfolioService
-
+    private portfolioService:PortfolioService,
   ) { }
 
   ngOnInit(): void {

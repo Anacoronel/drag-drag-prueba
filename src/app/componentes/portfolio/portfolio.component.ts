@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+
 
 
 @Component({
@@ -8,6 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
+  
+
+appComponent=[
+  'app-app-header',
+  'app-sobremi',
+  'app-proyectos-skills',
+  'app-educ-exp',
+]
+
+
+dropped(event: CdkDragDrop<string[]>) {
+  moveItemInArray(
+     this.appComponent,
+     event.previousIndex,
+     event.currentIndex
+    );
+  }
+  
+
 
   constructor() { }
 

@@ -28,6 +28,8 @@ export class AddEduComponent implements OnInit {
   titulo: string = "";
   persona_id: any;
   showAddEdu: boolean = false;
+  edit: boolean = false;
+
   subscription?:Subscription;
   closeAddEdu:boolean=!this.showAddEdu;
   MatTable:any;
@@ -41,6 +43,9 @@ export class AddEduComponent implements OnInit {
 
     ) { this.portfolioService.obtenerEdu().subscribe(edu =>{console.log(edu);
       this.edu=edu;
+   });
+   this.portfolioService.getEdu(this.id).subscribe(edu =>{console.log(edu);
+    this.id=edu.id;
    });
     this.uiService.toggleAddEdu();this.subscription = this.uiService.onToggle()
     .subscribe(value => this.showAddEdu = value)
@@ -57,7 +62,8 @@ onSubmit() {
   this.onAddEdu.emit(newEdu);
   this.portfolioService.addEdu(newEdu).subscribe(dato =>{console.log(dato);
   }) ;
-  
+  this.router.navigate(['add-edu']);
+
   }
   
   onDelete(edu:Edu){
@@ -67,18 +73,35 @@ onSubmit() {
  }
 
 
-  onEdit(id:any){
+  onEdit(edu:Edu){
 
-    const { institucion, fecha, link, titulo, persona_id} = this
+    const { id, institucion, fecha, link, titulo, persona_id} = this
     const newEdu = {id, institucion, fecha, link, titulo, persona_id}
-    console.log("editedu");
-    this.showAddEdu= true;
     this.onEditEdu.emit(newEdu);
-    
+    console.log("edit " + id);
+      this.edEdu(newEdu);
+
+      
+
+    }
+
+
+
+    /*const { id,institucion, fecha, link, titulo, persona_id} = this
+    const newEdu = {id, institucion, fecha, link, titulo, persona_id}
+    console.log("editedu" , edu.id);
+    this.showAddEdu= true;
+    this.edit=true;
+    this.onEditEdu.emit(newEdu);
+
     this.portfolioService.editEdu(newEdu).subscribe(edu =>{console.log(edu);
-    }) ;
-  }
+    }) ;*/
   
+  edEdu( edu:Edu):void{
+    this.edu=this.edu.filter(e=> e !== edu);
+     console.log(edu.id );
+      this.portfolioService.editEdu(edu).subscribe(); 
+     }
   
     deleteEdu( edu:Edu):void{
      console.log(edu.id );this.edu=this.edu.filter(e=> e !== edu);
@@ -89,9 +112,6 @@ onSubmit() {
   
     
 
-function newEdu(newEdu: any) {
-  throw new Error('Function not implemented.');
-}
-   
+
 
 

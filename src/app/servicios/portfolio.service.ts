@@ -30,12 +30,23 @@ export class PortfolioService {
   obtenerEdu():Observable<any[]>{
     return this.http.get<Edu[]>(this.apiUrl + "/educacion/");
   }
- obtenerExp():Observable<Exp[]>{
- return this.http.get<Exp[]>(this.apiUrl + "/experiencia/");
+  getEdu(id: number): Observable<Edu>{
+    const url = `${this.apiUrl+'educacion/'}${id}`;
+    return this.http.get<Edu>(url);
+  }
+  
+
+   
+
+
+ obtenerExp():Observable<any[]>{
+  return this.http.get<Exp[]>(this.apiUrl + "/experiencia/");
 }
+
 obtenerProy():Observable<Proy[]>{
   return this.http.get<Proy[]>(this.apiUrl + "/proyecto/");
  }
+
  obtenerSkills():Observable<Skill[]>{
   return this.http.get<Skill[]>(this.apiUrl + "/skill/");
  }
@@ -49,19 +60,16 @@ addEdu(edu:Edu): Observable<Edu>{
 
 
 
-
 editEdu( edu:Edu): Observable<any>{
-  console.log(edu);
-  console.log(this.apiUrl+'/educacion/edit/'+edu.id);
-  return this.http.put<any>(`${this.apiUrl + '/educacion/edit/'}${edu.id}`,edu, httpOptions);
+  const id = typeof edu === 'number' ? edu : edu.id;
+
+  return this.http.put<any>(`${this.apiUrl + '/educacion/edit'}/${id}`, edu, httpOptions);
 }
+
 
 deleteEdu(edu: Edu | number): Observable<Edu> {
   const id = typeof edu === 'number' ? edu : edu.id;
   const url = `${this.apiUrl+ '/educacion/delete'}/${id}`;
-
- /*deleteEdu(edu:Edu):Observable<any>{
-  const url = `${this.apiUrl+ '/educacion/delete'}/${edu.id}`;*/
   return this.http.delete<any>(url, httpOptions);
    
   }

@@ -1,3 +1,4 @@
+import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddEduComponent} from './componentes/educ-exp/add-edu/add-edu.component';
@@ -13,6 +14,8 @@ const routes: Routes = [
  // {path:'iniciar-sesion', component: InicioSesionComponent},
  // {path:'', redirectTo:'iniciar-sesion',pathMatch:'full'}
   {path: 'add-edu', component: AddEduComponent},
+  { path: 'edit/:id', component: FormEduComponent},
+
     {path:'',pathMatch:'full', component:PortfolioComponent}
 
   
