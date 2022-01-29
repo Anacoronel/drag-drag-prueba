@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {UiService} from '../../../servicios/ui.service';
@@ -33,13 +33,13 @@ export class AddEduComponent implements OnInit {
   subscription?:Subscription;
   closeAddEdu:boolean=!this.showAddEdu;
   MatTable:any;
-  displayedColumns: string[] = ['link', 'institucion', 'fecha', 'titulo', 'select'];
+  displayedColumns: string[] = ['id','link', 'institucion', 'fecha', 'titulo', 'select'];
     
     
 
     
 
-  constructor(   private uiService : UiService,   private portfolioService:PortfolioService, private router:Router
+  constructor(   private uiService : UiService,   private portfolioService:PortfolioService, private router:Router,  public route:ActivatedRoute
 
     ) { this.portfolioService.obtenerEdu().subscribe(edu =>{console.log(edu);
       this.edu=edu;
@@ -53,6 +53,16 @@ export class AddEduComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap: ParamMap)=>{  
+  
+      if(paramMap.has('id')){  
+        this.edit=true;  
+        this.id = paramMap.get('id');  
+        this.id = this.portfolioService.getEdu(this.id);  
+
+      }
+    });   
+
   }
 onSubmit() {
   console.log("submitedu", this.edu);
@@ -73,19 +83,17 @@ onSubmit() {
  }
 
 
-  onEdit(edu:Edu){
+ onEdit(){
 
-    const { id, institucion, fecha, link, titulo, persona_id} = this
-    const newEdu = {id, institucion, fecha, link, titulo, persona_id}
-    this.onEditEdu.emit(newEdu);
-    console.log("edit " + id);
-      this.edEdu(newEdu);
+  const { id, institucion, fecha, link, titulo, persona_id} = this
+  const newEdu = {id, institucion, fecha, link, titulo, persona_id}
+  this.onEditEdu.emit(newEdu);
+  console.log("edit " + id);
+    this.edEdu(newEdu);
 
-      
+    
 
-    }
-
-
+  }
 
     /*const { id,institucion, fecha, link, titulo, persona_id} = this
     const newEdu = {id, institucion, fecha, link, titulo, persona_id}
@@ -96,12 +104,15 @@ onSubmit() {
 
     this.portfolioService.editEdu(newEdu).subscribe(edu =>{console.log(edu);
     }) ;*/
+    
   
-  edEdu( edu:Edu):void{
-    this.edu=this.edu.filter(e=> e !== edu);
-     console.log(edu.id );
-      this.portfolioService.editEdu(edu).subscribe(); 
-     }
+    edEdu( edu:Edu):void{
+      this.edu=this.edu.filter(e=> e !== edu);
+       console.log(edu.id );
+        this.portfolioService.editEdu(edu).subscribe(); 
+        this.router.navigate(['/add-edu']);
+
+       }
   
     deleteEdu( edu:Edu):void{
      console.log(edu.id );this.edu=this.edu.filter(e=> e !== edu);

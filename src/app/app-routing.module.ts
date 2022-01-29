@@ -14,7 +14,6 @@ const routes: Routes = [
  // {path:'iniciar-sesion', component: InicioSesionComponent},
  // {path:'', redirectTo:'iniciar-sesion',pathMatch:'full'}
   {path: 'add-edu', component: AddEduComponent},
-  { path: 'edit/:id', component: FormEduComponent},
 
     {path:'',pathMatch:'full', component:PortfolioComponent}
 
