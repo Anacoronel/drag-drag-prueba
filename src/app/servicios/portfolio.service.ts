@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpHandler, HttpHeaderResponse, HttpParams} from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { Exp } from '../componentes/educ-exp/Exp';
-import { Edu } from '../componentes/educ-exp/Edu';
-import {Skill} from '../componentes/Skill';
-import {Proy} from '../componentes/Proy';
+import { Exp } from '../models/Exp';
+import { Edu } from '../models/Edu';
+import {Skill} from '../models/Skill';
+import {Proy} from '../models/Proy';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,7 +19,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PortfolioService {
-  apiUrl:string ='http://localhost:8080';
+  apiUrl:string ="http://localhost:8080";
   
   constructor(private http:HttpClient) {}
   
@@ -54,7 +54,7 @@ obtenerProy():Observable<Proy[]>{
  
 
 addEdu(edu:Edu): Observable<Edu>{
-  return this.http.post<Edu>(this.apiUrl+'/educacion/new',edu);
+  return this.http.post<Edu>(this.apiUrl+"/educacion/new",edu);
 }
 
 

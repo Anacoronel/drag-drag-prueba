@@ -9,6 +9,9 @@ export class UiService {
   private showAddEdu: boolean = false;
   private subject = new Subject<any>();
 
+  private agregarEdu: boolean = false;
+  private ed = new Subject<any>();
+
   private showAddExp: boolean = false;
   private exp = new Subject<any>();
 
@@ -23,6 +26,17 @@ export class UiService {
     return this.subject.asObservable(); 
 
   }
+
+  toggleAgregarEdu(): void{
+    this.agregarEdu = !this.agregarEdu;
+    this.subject.next(this.agregarEdu);
+  }
+  
+  onToggleEd():Observable<any>{
+    return this.subject.asObservable(); 
+
+  }
+
 
   toggleAddExp(): void{
     this.showAddExp = !this.showAddExp;

@@ -17,8 +17,15 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 import {CdkTableModule} from '@angular/cdk/table';
 import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule } from '@angular/material/dialog';
+
+
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,6 +39,7 @@ import { AddskillComponent } from './componentes/proyectos-skills/addskill/addsk
 import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
+import { EducacionComponent } from './componentes/educacion/educacion.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,8 @@ import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.compo
     AddskillComponent,
     LoginComponent,
     PortfolioComponent,
-    FormEduComponent
+    FormEduComponent,
+    EducacionComponent
     
 
   ],
@@ -62,9 +71,9 @@ import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.compo
     MatCardModule, MatCheckboxModule,
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule,
-    FormsModule,CdkTableModule, MatTableModule
-     
-    
+    FormsModule,CdkTableModule, MatTableModule,
+    MatDialogModule, MatFormFieldModule, 
+    MatInputModule
 
    
     

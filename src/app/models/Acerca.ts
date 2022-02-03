@@ -1,6 +1,5 @@
-export interface Skill{
+export interface Acerca{
     id: any;
     texto: string;
-    porcentaje: string;
     persona_id: any;
 }

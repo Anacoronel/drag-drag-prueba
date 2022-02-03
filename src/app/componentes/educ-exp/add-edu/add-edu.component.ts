@@ -1,9 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input, NgModule } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {UiService} from '../../../servicios/ui.service';
-import {Edu} from '../Edu';
+import {Edu} from '../../../models/Edu';
 import { MatTableModule } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/collections';
 
@@ -20,7 +21,6 @@ export class AddEduComponent implements OnInit {
   @Output() onDeleteEdu: EventEmitter<Edu> = new EventEmitter();
   @Output() onEditEdu: EventEmitter<Edu> = new EventEmitter();
 
-
   id:any;
   institucion: string ="";
   fecha: string = "";
@@ -28,6 +28,7 @@ export class AddEduComponent implements OnInit {
   titulo: string = "";
   persona_id: any;
   showAddEdu: boolean = false;
+  agregarEdu: boolean = false;
   edit: boolean = false;
 
   subscription?:Subscription;
@@ -48,12 +49,16 @@ export class AddEduComponent implements OnInit {
     this.id=edu.id;
    });
     this.uiService.toggleAddEdu();this.subscription = this.uiService.onToggle()
-    .subscribe(value => this.showAddEdu = value)
+    .subscribe(value => this.showAddEdu = value);
+
+    this.uiService.toggleAgregarEdu();this.subscription = this.uiService.onToggle()
+    .subscribe(value => this.agregarEdu = value)
+
 
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((paramMap: ParamMap)=>{  
+    /*this.route.paramMap.subscribe((paramMap: ParamMap)=>{  
   
       if(paramMap.has('id')){  
         this.edit=true;  
@@ -62,20 +67,37 @@ export class AddEduComponent implements OnInit {
 
       }
     });   
+    const id = +this.route.snapshot.params['id'];  */
+
 
   }
 onSubmit() {
   console.log("submitedu", this.edu);
  const {id,institucion, fecha, link, titulo, persona_id} = this
   const newEdu = {id, institucion, fecha, link, titulo, persona_id}
+  this.agregarEdu = true;
+
 
   this.onAddEdu.emit(newEdu);
   this.portfolioService.addEdu(newEdu).subscribe(dato =>{console.log(dato);
   }) ;
-  this.router.navigate(['add-edu']);
+}
 
-  }
-  
+agregar(edu:Edu){
+    this.agregarEdu = true;
+    this.id = edu.id;
+    this.institucion =edu.institucion;
+    this.fecha = edu.fecha;
+    this.titulo = edu.titulo;
+    this.link = edu.link;
+    this.onAddEdu.emit(edu);
+    this.portfolioService.addEdu(edu).subscribe(); 
+
+    }
+    
+
+
+
   onDelete(edu:Edu){
     console.log("deledu");
     this.onDeleteEdu.emit(edu);
@@ -118,7 +140,18 @@ onSubmit() {
      console.log(edu.id );this.edu=this.edu.filter(e=> e !== edu);
       this.portfolioService.deleteEdu(edu).subscribe(); 
      }
-   
+     editar(edu: Edu) {
+      this.showAddEdu = true;
+      this.edit=true;
+      this.id = edu.id;
+      this.institucion =edu.institucion;
+      this.fecha = edu.fecha;
+      this.titulo = edu.titulo;
+      this.link = edu.link;
+      this.portfolioService.editEdu(edu).subscribe(); 
+
+      }
+      
    }
   
     

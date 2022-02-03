@@ -1,8 +1,10 @@
 export interface Edu {
-    id: number;
+    id: any;
     institucion: string;
     link: string;
     fecha: string;
     titulo: string;
     persona_id: any;
+
+    
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { TransitionCheckState } from '@angular/material/checkbox';
 import { Subscription } from 'rxjs';
 import {UiService} from '../../../servicios/ui.service';
-import {Exp}from '../Exp';
+import  {Exp} from '../../../models/Exp';
 import {MatIconModule} from '@angular/material/icon';
 
 
@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
-  @Input() exp: Exp[] = [];
+  @Input() exp:Exp[] = [];
 
   @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
   @Output() onDeleteExp: EventEmitter<Exp> =new EventEmitter();

@@ -1,25 +1,29 @@
-.circle-progress {
-    text-align: center;
-    position: relative;
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  
+  height: 20px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+mat-progress-spinner{
+  size:1rem;
+  display: flex;
 
 }
-      .path-fg {
-        fill: #3886EA;
-      }
-    
+.skills{
+  list-style: none;
+}
 
-    .content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-      .title {
-        font-size: 42pt;
-      }
-      
-    
+.card-body{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+justify-content: space-between;
+}

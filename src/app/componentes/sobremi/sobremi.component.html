@@ -4,23 +4,123 @@
 
         <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Acerca de mi <a href="#"class="icon3"><i class="fa fa-pencil"></i></a>
-            <a href="#"class="icon4"><i class="fa fa-trash"></i></a></h3>
-        <p class="text-muted"><small class="text-muted center">Emprendedora. Autodidacta. Siempre dispuesta a superar desafios. Busco resolver problemas y aprender cosas nuevas. Soy paciente, flexible y me gusta compartir lo que se con quienes me rodean.</small>  </p>
+        <h3 class="card-title">Acerca de mi</h3>
+         <a href="#"class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaacerca"></i></a>
+            
+        <p class="text-muted"><small class="text-muted center">{{acerca.texto}}</small>  </p>
         <p class="card-text"></p>
       </div>
-    </div>
 
+       <!-- Modal -->
+  <div class="modal fade" id="editaacerca" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Editar Acerca de mi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+    </div>
+   
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title">Idiomas<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
-                <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h3>
+            <h3 class="card-title">Idiomas</h3>
+                <div><a href="#" class="agregar"><i class="fa fa-plus"data-toggle="modal" data-target="#agregaidioma"></i></a></div>
                 <p class="card-text"></p>
                 <p class="card-text"><small class="text-muted">
-                    <p>Ingles B2/C1 </p>
-                    <p>Portugues. Frances. Aleman. Nivel A1/A2</p>
+
+                    <ul class="idiomas"*ngFor="let idioma of idioma">{{idioma.texto}}
+                           <li>{{idioma.nivel}}
+                           
+                            <a href="#" class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaidioma"></i></a>
+                            <a href="#" class="icon4"><i class="fa fa-trash"data-toggle="modal" data-target="#borraidioma"></i></a>
+                         </li>
+                     </ul>
+
                 </small></p>
         </div>
+
+
     </div>
+           <!-- Modal -->
+           <div class="modal fade" id="agregaidioma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Agregar Idioma</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+                
+          <!-- Modal -->
+          <div class="modal fade" id="editaidioma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Editar Idioma</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+                
+          <!-- Modal -->
+          <div class="modal fade" id="borraidioma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Idioma</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+        Esta seguro de borrar este registro?        </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Eliminar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+                
+          
+                   
+
 </div>
 </div>

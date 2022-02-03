@@ -58,7 +58,8 @@
       
   }
   #nombre{
-  margin-left: 8rem;
+  margin-left: 6.5rem;
+  margin-top:-3rem;
   
 
   
@@ -92,6 +93,7 @@
   }
   .card-title{
       color:#2f535e;
+      
   }
   .card-text{
     color: #383838;
@@ -117,7 +119,7 @@
       
       
   }
-  #agregar{
+  .agregar{
     color:#2f535e;
     font-size: medium;
     margin-left:1rem; 
@@ -201,6 +203,9 @@
       color:#383838;
       font-size: medium;
       
+  }
+  .form-control{
+    border:none;
   }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;color:#383838 }

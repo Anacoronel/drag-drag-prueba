@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Edu } from './Edu';
-import { Exp } from './Exp';
+import { Component, Input, OnInit } from '@angular/core';
+import { Edu } from '../../models/Edu';
+import { Exp } from '../../models/Exp';
 import {PortfolioService} from './../../servicios/portfolio.service'
 
 @Component({
@@ -9,8 +9,18 @@ import {PortfolioService} from './../../servicios/portfolio.service'
   styleUrls: ['./educ-exp.component.css']
 })
 export class EducExpComponent implements OnInit {
+  @Input() edu: Edu[]=[];
+
   exp:Exp[] = [];
-  edu:Edu[] = [];
+  
+  id:any;
+  institucion: string ="";
+  fecha: string = "";
+  link: string = "";
+  titulo: string = "";
+  empresa:string=";"
+  date: string="";
+  persona_id: any;
   
   constructor(
     private portfolioService:PortfolioService,
