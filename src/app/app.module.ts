@@ -1,3 +1,6 @@
+import { UbicacionService } from './servicios/ubicacion.service';
+import { AcercaService } from './servicios/acerca.service';
+import { IdiomaService } from './servicios/idioma.service';
 import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -40,6 +43,8 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
 import { EducacionComponent } from './componentes/educacion/educacion.component';
+import { HeaderService } from './servicios/header.service';
+import { PersonaService } from './servicios/persona.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +84,7 @@ import { EducacionComponent } from './componentes/educacion/educacion.component'
     
     
   ],
-  providers: [PortfolioService, UiService//,{
+  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService//{
    // provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
  // }
 ],

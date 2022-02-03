@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpHandler, HttpHeaderResponse, HttpParams } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import{Acerca} from '../models/Acerca'
+import{Acercade} from '../models/Acercade';
 
 
 
@@ -20,24 +20,24 @@ export class HeaderService {
   constructor(private http: HttpClient) { }
 
   obtenerAcerca(): Observable<any[]> {
-    return this.http.get<Acerca[]>(this.apiUrl + "/acerca/");
+    return this.http.get<Acercade[]>(this.apiUrl + "/acerca/");
   }
-  getAcerca(id: number): Observable<Acerca> {
+  getAcerca(id: number): Observable<Acercade> {
     const url = `${this.apiUrl + 'acerca/'}${id}`;
-    return this.http.get<Acerca>(url);
+    return this.http.get<Acercade>(url);
   }
-  addAcerca(acerca: Acerca): Observable<Acerca> {
-    return this.http.post<Acerca>(this.apiUrl + "/acerca/new", acerca);
-  }
-
-  editAcerca(acerca: Acerca): Observable<any> {
-    const id = typeof acerca === 'number' ? acerca : acerca.id;
-
-    return this.http.put<any>(`${this.apiUrl + '/acerca/edit'}/${id}`, acerca, httpOptions);
+  addAcerca(acercade: Acercade): Observable<Acercade> {
+    return this.http.post<Acercade>(this.apiUrl + "/acerca/new", acercade);
   }
 
-  deleteAcerca(acerca: Acerca | number): Observable<Acerca> {
-    const id = typeof acerca === 'number' ? acerca : acerca.id;
+  editAcerca(acercade: Acercade): Observable<any> {
+    const id = typeof acercade === 'number' ? acercade : acercade.id;
+
+    return this.http.put<any>(`${this.apiUrl + '/acerca/edit'}/${id}`, acercade, httpOptions);
+  }
+
+  deleteAcerca(acercade: Acercade | number): Observable<Acercade> {
+    const id = typeof acercade === 'number' ? acercade : acercade.id;
     const url = `${this.apiUrl + '/acerca/delete'}/${id}`;
     return this.http.delete<any>(url, httpOptions);
 

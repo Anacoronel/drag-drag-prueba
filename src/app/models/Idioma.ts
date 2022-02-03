@@ -1,6 +1,6 @@
 export interface Idioma{
     id: any;
-    idioma: string;
+    texto: string;
     nivel: string;
     persona_id: any;
 }

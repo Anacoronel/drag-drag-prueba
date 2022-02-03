@@ -1,3 +1,4 @@
+import { Ubicacion } from './../models/Ubicacion';
 import { Persona } from 'src/app/models/Persona';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpHandler, HttpHeaderResponse, HttpParams } from '@angular/common/http';
@@ -34,7 +35,7 @@ export class PersonaService {
     return this.http.put<any>(`${this.apiUrl + '/persona/edit'}/${id}`, persona, httpOptions);
   }
 
-  deleteAcerca(persona: Persona | number): Observable<Persona> {
+  deletePersona(persona: Persona | number): Observable<Persona> {
     const id = typeof persona === 'number' ? persona : persona.id;
     const url = `${this.apiUrl + '/persona/delete'}/${id}`;
     return this.http.delete<any>(url, httpOptions);
@@ -42,6 +43,30 @@ export class PersonaService {
   }
 
 
+
+  obtenerUbicacion(): Observable<any[]> {
+    return this.http.get<Ubicacion[]>(this.apiUrl + "/ubicacion/");
+  }
+  getUbicacion(id: number): Observable<Ubicacion> {
+    const url = `${this.apiUrl + 'ubicacion/'}${id}`;
+    return this.http.get<Ubicacion>(url);
+  }
+  addUbicacion(ubicacion: Ubicacion): Observable<Ubicacion> {
+    return this.http.post<Ubicacion>(this.apiUrl + "/ubicacion/new", ubicacion);
+  }
+
+  editUbicacion(ubicacion: Ubicacion): Observable<any> {
+    const id = typeof ubicacion === 'number' ? ubicacion : ubicacion.id;
+
+    return this.http.put<any>(`${this.apiUrl + '/ubicacion/edit'}/${id}`, ubicacion, httpOptions);
+  }
+
+  deleteUbicacion(ubicacion: Ubicacion | number): Observable<Ubicacion> {
+    const id = typeof ubicacion === 'number' ? ubicacion : ubicacion.id;
+    const url = `${this.apiUrl + '/ubicacion/delete'}/${id}`;
+    return this.http.delete<any>(url, httpOptions);
+
+  }
 
 
 

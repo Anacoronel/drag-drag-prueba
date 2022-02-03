@@ -7,7 +7,7 @@
         <h3 class="card-title">Acerca de mi</h3>
          <a href="#"class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaacerca"></i></a>
             
-        <p class="text-muted"><small class="text-muted center">{{acerca.texto}}</small>  </p>
+        <p class="text-muted"><small class="text-muted center">{{acercade}}}</small>  </p>
         <p class="card-text"></p>
       </div>
 
@@ -22,7 +22,10 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+            <input type="text" class="form-control" name="texto" placeholder="Acerca de mi"
+              [(ngModel)]="texto" />
+            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -41,8 +44,9 @@
                 <p class="card-text"></p>
                 <p class="card-text"><small class="text-muted">
 
-                    <ul class="idiomas"*ngFor="let idioma of idioma">{{idioma.texto}}
-                           <li>{{idioma.nivel}}
+                    <ul class="idiomas">
+                           <li *ngFor="let idioma of idioma">{{idioma.texto}}
+                             {{idioma.nivel}}
                            
                             <a href="#" class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaidioma"></i></a>
                             <a href="#" class="icon4"><i class="fa fa-trash"data-toggle="modal" data-target="#borraidioma"></i></a>
@@ -65,7 +69,11 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  ...
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+            <input type="text" class="form-control" name="idioma" placeholder="Idioma"
+              [(ngModel)]="texto" />
+            <input type="text" class="form-control" name="nivel" placeholder="Nivel" [(ngModel)]="nivel" />
+            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -87,7 +95,11 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  ...
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+            <input type="text" class="form-control" name="idioma" placeholder="Idioma"
+              [(ngModel)]="texto" />
+            <input type="text" class="form-control" name="nivel" placeholder="Nivel" [(ngModel)]="nivel" />
+            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

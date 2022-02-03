@@ -18,19 +18,19 @@
   
     <div class="jumbotron text-white jumbotron-image shadow" 
         style="background-image: url(../assets/imgs/pexels-photo-949587.jpeg);">
-        <h2  id="nombre">{{nombre}}
+        <h2  id="nombre">{{persona.nombre}}
             <br><br>
         </h2>
         </div>
         <div>
-        <img class="fotodeperfil" src="https://pbs.twimg.com/profile_images/1382785431436193796/RYIvzD5X_400x400.jpg" [src]="fotoperfil" alt="fotoperfil">
-        <p class="info" id="info1"> {{descripcion}}
+        <img class="fotodeperfil" src="https://pbs.twimg.com/profile_images/1382785431436193796/RYIvzD5X_400x400.jpg" [src]="persona.fotoperfil" alt="fotoperfil">
+        <p class="info" id="info1"> {{persona.descripcion}}
             </p>  
          <p class="info">
                 {{ubicacion.ciudad}}</p>
          <p class="info">
             {{ubicacion.pais}} <a href="#"id="icon1"><i class="fa fa-pencil"data-toggle="modal" data-target="#editapersona"></i></a> <br>
-          <a id="mail"href={{mail}}></a>
+          <a id="mail"href={{persona.mail}}></a>
                     
             </p>
 
@@ -47,8 +47,8 @@
       <div class="modal-body">
         <input type="text" class="form-control" name="nombre" placeholder="Nombre"
                         [(ngModel)]="nombre">
-        <input type="text"class="form-control" name="ciudad" placeholder="Ciudad" size="50" [(ngModel)]="ciudad">
-        <input type="text" class="form-control" name="pais" placeholder="Pais" size="50" [(ngModel)]="pais">
+        <input type="text"class="form-control" name="ciudad" placeholder="Ciudad" size="50" [(ngModel)]="ubicacion.ciudad">
+        <input type="text" class="form-control" name="pais" placeholder="Pais" size="50" [(ngModel)]="ubicacion.pais">
         <input type="text"  class="form-control"name="email" placeholder="email" size="50" [(ngModel)]="mail">
 
       </div>

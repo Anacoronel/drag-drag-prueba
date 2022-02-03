@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Acercade } from 'src/app/models/Acercade';
+import { Idioma } from 'src/app/models/Idioma';
+import { HeaderService } from 'src/app/servicios/header.service';
+import { IdiomaService } from 'src/app/servicios/idioma.service';
 
 
 @Component({
@@ -7,13 +11,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sobremi.component.css']
 })
 export class SobremiComponent implements OnInit {
-idioma:any;
-acerca:any;
+idioma:Idioma[]=[];
+acercade:Acercade[]=[];
+id:any;
+nivel:string="";
+texto:string="";
+persona_id:any;
 
-  constructor() { }
+  constructor(private headerService: HeaderService, private idiomaService:IdiomaService) {
+   
+   }
 
   ngOnInit(): void {
+    this.headerService.obtenerAcerca().subscribe((data) => {
+      console.log(data);
+      this.acercade=data;
+    });
+
+    this.idiomaService.obtenerIdioma().subscribe((data) => {
+      console.log(data);
+      this.idioma=data;
+    });
+
+
   }
+  
 
 }
 /*
