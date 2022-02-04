@@ -26,7 +26,7 @@ export class AddEduComponent implements OnInit {
   fecha: string = "";
   link: string = "";
   titulo: string = "";
-  persona_id: any;
+  persona!: { id: any; };
   showAddEdu: boolean = false;
   agregarEdu: boolean = false;
   edit: boolean = false;
@@ -71,7 +71,7 @@ export class AddEduComponent implements OnInit {
 
 
   }
-onSubmit() {
+/*onSubmit() {
   console.log("submitedu", this.edu);
  const {id,institucion, fecha, link, titulo, persona_id} = this
   const newEdu = {id, institucion, fecha, link, titulo, persona_id}
@@ -107,18 +107,18 @@ agregar(edu:Edu){
 
  onEdit(){
 
-  const { id, institucion, fecha, link, titulo, persona_id} = this
-  const newEdu = {id, institucion, fecha, link, titulo, persona_id}
-  this.onEditEdu.emit(newEdu);
+  const { id, institucion, fecha, link, titulo, persona} = this
+  const edu = {id, institucion, fecha, link, titulo, persona}
+  this.onEditEdu.emit(this.edu);
   console.log("edit " + id);
-    this.edEdu(newEdu);
+    this.edEdu(edu);
 
     
 
   }
 
-    /*const { id,institucion, fecha, link, titulo, persona_id} = this
-    const newEdu = {id, institucion, fecha, link, titulo, persona_id}
+    /*const { id,institucion, fecha, link, titulo, persona} = this
+    const newEdu = {id, institucion, fecha, link, titulo, persona}
     console.log("editedu" , edu.id);
     this.showAddEdu= true;
     this.edit=true;

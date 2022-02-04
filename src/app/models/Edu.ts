@@ -1,4 +1,7 @@
+
 export class Edu {
+
+
     id: any;
     institucion: string="";
     link: string="";

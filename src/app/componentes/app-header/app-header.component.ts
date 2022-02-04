@@ -14,12 +14,21 @@ import { UbicacionService } from 'src/app/servicios/ubicacion.service';
 })
 export class AppHeaderComponent implements OnInit {
 
-  @Input() acercade:Acercade[]=[];
-  @Input() persona :any[]=[];
-  @Input() ubicacion:any[]=[];
+   acercade:Acercade[]=[];
+  
+    persona:any[]=[];
+    ubicacion:any[]=[];
 
+id:any;
+ nombre:string="";
+ fotoperfil:string="";
+ texto:string=";"
+ descripcion:string="";
+ fotoback:string="";
+ mail:string="";
+ ciudad:string="";
+ pais:string="";
 
- 
 
 
   
