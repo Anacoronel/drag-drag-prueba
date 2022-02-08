@@ -31,6 +31,9 @@ export class EducExpComponent implements OnInit {
   @Output() onEditEdu: EventEmitter<Edu> = new EventEmitter();
 
   @Input() exp: Exp[] = [];
+  @Output() onAddExp: EventEmitter<Exp> = new EventEmitter();
+  @Output() onDeleteExp: EventEmitter<Exp> = new EventEmitter();
+  @Output() onEditExp: EventEmitter<Exp> = new EventEmitter();
 
   id: any;
   institucion: string = '';
@@ -125,14 +128,40 @@ export class EducExpComponent implements OnInit {
 
   }
 
-  deleteExp(exp: Exp) {
-    this.portfolioService.deleteExp(exp).subscribe((dato) => {
-      console.log(dato);
-      this.portfolioService.obtenerExp();
-    });
+  editarExp(exp: Exp) {
+    console.log('edit ' + exp.id);
+
+    this.id = exp.id;
+    this.empresa = exp.empresa;
+    this.fecha = exp.fecha;
+    this.fechaHasta= exp.fechaHasta;
+    this.puesto = exp.puesto;
+    this.link = exp.link;
+    this.persona_id = exp.persona_id;
+
+    this.onEditExp.emit(exp);
+    this.portfolioService.editExp(exp).subscribe((exp) => {});
+    this.portfolioService.obtenerExp();
+
   }
+
+  deleteExp(exp: Exp) {
+    console.log(exp.id);
+    this.exp = this.exp.filter((e) => e !== exp);
+    this.portfolioService.deleteExp(exp).subscribe();
+    }
+  
   
 
-  editarExp(exp: Exp) {}
-  agregarExp() {}
+  agregarExp(){
+    console.log('submitexp', this.exp);
+    const { id, empresa, fecha, fechaHasta, link, puesto, persona_id } = this;
+    const newExp = { id, empresa, fecha, fechaHasta, link, puesto, persona_id };
+
+    this.onAddExp.emit(newExp);
+    this.portfolioService.addExp(newExp).subscribe((dato) => {
+      console.log(dato);
+    });
+    this.portfolioService.obtenerExp();
+  }
 }

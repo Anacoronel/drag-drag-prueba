@@ -35,7 +35,10 @@ export class PortfolioService {
     return this.http.get<Edu>(url);
   }
   
-
+  getExp(id: number): Observable<Exp>{
+    const url = `${this.apiUrl+'experiencia/'}${id}`;
+    return this.http.get<Exp>(url);
+  }
    
 
 
@@ -81,8 +84,13 @@ deleteExp(exp:Exp | number):Observable<any>{
     return this.http.delete<Exp>(url, httpOptions);
 }
 
-
-
+addExp(exp:Exp): Observable<Exp>{
+  return this.http.post<Exp>(this.apiUrl+"/experiencia/new",exp);
+}
+editExp( exp:Exp|number): Observable<Exp>{
+  const id =  typeof exp === 'number' ? exp : exp.id;
+  return this.http.put<Exp>(`${this.apiUrl + '/experiencia/edit'}/${id}`, exp, httpOptions);
+ }
 
 
 
