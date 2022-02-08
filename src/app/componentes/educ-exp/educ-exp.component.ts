@@ -16,7 +16,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FormEduComponent } from './form-edu/form-edu.component';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -101,7 +100,7 @@ export class EducExpComponent implements OnInit {
     console.log(edu.id);
     this.edu = this.edu.filter((e) => e !== edu);
     this.portfolioService.deleteEdu(edu).subscribe();
-    this.modalService.hide()
+    this.modalService.hide();
   }
 
   agregarEdu() {
@@ -112,10 +111,10 @@ export class EducExpComponent implements OnInit {
     this.onAddEdu.emit(newEdu);
     this.portfolioService.addEdu(newEdu).subscribe((dato) => {
       console.log(dato);
-    });    this.modalService.hide()
+    });
+    this.modalService.hide();
 
     this.portfolioService.obtenerEdu();
-
   }
 
   editarEdu(edu: Edu) {
@@ -130,10 +129,9 @@ export class EducExpComponent implements OnInit {
 
     this.onEditEdu.emit(edu);
     this.portfolioService.editEdu(edu).subscribe((edu) => {});
-    this.modalService.hide()
+    this.modalService.hide();
 
     this.portfolioService.obtenerEdu();
-
   }
 
   editarExp(exp: Exp) {
@@ -142,30 +140,26 @@ export class EducExpComponent implements OnInit {
     this.id = exp.id;
     this.empresa = exp.empresa;
     this.fecha = exp.fecha;
-    this.fechaHasta= exp.fechaHasta;
+    this.fechaHasta = exp.fechaHasta;
     this.puesto = exp.puesto;
     this.link = exp.link;
     this.persona_id = exp.persona_id;
 
     this.onEditExp.emit(exp);
     this.portfolioService.editExp(exp).subscribe((exp) => {});
-    this.modalService.hide()
+    this.modalService.hide();
 
     this.portfolioService.obtenerExp();
-
   }
 
   deleteExp(exp: Exp) {
     console.log(exp.id);
     this.exp = this.exp.filter((e) => e !== exp);
     this.portfolioService.deleteExp(exp).subscribe();
-    this.modalService.hide()
+    this.modalService.hide();
+  }
 
-    }
-  
-  
-
-  agregarExp(){
+  agregarExp() {
     console.log('submitexp', this.exp);
     const { id, empresa, fecha, fechaHasta, link, puesto, persona_id } = this;
     const newExp = { id, empresa, fecha, fechaHasta, link, puesto, persona_id };
@@ -175,7 +169,6 @@ export class EducExpComponent implements OnInit {
       console.log(dato);
     });
     this.portfolioService.obtenerExp();
-    this.modalService.hide()
-
+    this.modalService.hide();
   }
 }
