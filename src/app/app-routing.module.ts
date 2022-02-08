@@ -1,7 +1,5 @@
-import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddEduComponent} from './componentes/educ-exp/add-edu/add-edu.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 /*import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
@@ -13,7 +11,7 @@ const routes: Routes = [
  // {path:'portfolio', component: PortfolioComponent, canActivatpathe:[GuardGuard]},
  // {path:'iniciar-sesion', component: InicioSesionComponent},
  // {path:'', redirectTo:'iniciar-sesion',pathMatch:'full'}
-  {path: 'add-edu', component: AddEduComponent},
+ // {path: 'add-edu', component: AddEduComponent},
 
     {path:'',pathMatch:'full', component:PortfolioComponent}
 
