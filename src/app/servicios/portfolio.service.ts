@@ -60,24 +60,25 @@ addEdu(edu:Edu): Observable<Edu>{
 
 
 
-editEdu( edu:Edu): Observable<any>{
-  const id = typeof edu === 'number' ? edu : edu.id;
-
-  return this.http.put<any>(`${this.apiUrl + '/educacion/edit'}/${id}`, edu, httpOptions);
+editEdu( edu:Edu|number): Observable<Edu>{
+ const id =  typeof edu === 'number' ? edu : edu.id;
+ return this.http.put<Edu>(`${this.apiUrl + '/educacion/edit'}/${id}`, edu, httpOptions);
 }
 
 
 deleteEdu(edu: Edu | number): Observable<Edu> {
   const id = typeof edu === 'number' ? edu : edu.id;
   const url = `${this.apiUrl+ '/educacion/delete'}/${id}`;
-  return this.http.delete<any>(url, httpOptions);
+  return this.http.delete<Edu>(url, httpOptions);
    
   }
 
 
-deleteExp(id:number):Observable<any>{
-  const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<any>(url);
+deleteExp(exp:Exp | number):Observable<any>{
+  const id = typeof exp === 'number' ? exp : exp.id;
+
+  const url = `${this.apiUrl+ '/educacion/delete'}/${id}`;
+    return this.http.delete<Exp>(url, httpOptions);
 }
 
 

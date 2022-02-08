@@ -71,6 +71,10 @@ export class AddEduComponent implements OnInit {
 
 
   }
+
+  onSubmit(){}
+  onDelete(){}
+  onEdit(){}
 /*onSubmit() {
   console.log("submitedu", this.edu);
  const {id,institucion, fecha, link, titulo, persona_id} = this

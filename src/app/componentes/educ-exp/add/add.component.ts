@@ -20,7 +20,8 @@ export class AddComponent implements OnInit {
 
   id: any;
   empresa: string="";
-  date: string = "";
+  fecha: string = "";
+  fechaHasta: string ="";
   link: string = "";
   puesto: string= "";
   persona_id: any;
@@ -43,8 +44,8 @@ export class AddComponent implements OnInit {
       return
    }*/console.log("addexp");
   
- const {id,empresa, date, link, puesto, persona_id} = this
-  const newExp ={id,empresa, date, link, puesto, persona_id}
+ const {id,empresa, fecha, fechaHasta, link, puesto, persona_id} = this
+  const newExp ={id,empresa, fecha, fechaHasta, link, puesto, persona_id}
 
   this.onAddExp.emit(newExp);
   }

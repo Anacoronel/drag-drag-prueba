@@ -11,11 +11,12 @@ import { IdiomaService } from 'src/app/servicios/idioma.service';
   styleUrls: ['./sobremi.component.css']
 })
 export class SobremiComponent implements OnInit {
-idioma:Idioma[]=[];
-acercade:Acercade[]=[];
+@Input()idiomas:Idioma[]=[];
+@Input()acercade:Acercade[]=[];
 id:any;
 nivel:string="";
 texto:string="";
+idioma: string="";
 persona_id:any;
 
   constructor(private headerService: HeaderService, private idiomaService:IdiomaService) {
@@ -30,7 +31,7 @@ persona_id:any;
 
     this.idiomaService.obtenerIdioma().subscribe((data) => {
       console.log(data);
-      this.idioma=data;
+      this.idiomas=data;
     });
 
 

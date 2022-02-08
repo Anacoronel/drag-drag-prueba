@@ -20,6 +20,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 
 
 import {CdkTableModule} from '@angular/cdk/table';
@@ -27,6 +29,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule } from '@angular/material/dialog';
+import { ModalModule, BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 
 
@@ -77,14 +81,28 @@ import { PersonaService } from './servicios/persona.service';
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule,
     FormsModule,CdkTableModule, MatTableModule,
-    MatDialogModule, MatFormFieldModule, 
-    MatInputModule
-
+    MatDialogModule, MatFormFieldModule, ModalModule,
+    MatInputModule, NgCircleProgressModule.forRoot({
+      // set defaults here
+      "radius": 10,
+      "outerStrokeWidth": 10,
+      "innerStrokeWidth": 5,
+      "showBackground": false,
+      "startFromZero": false, 
+      "showTitle":true,
+      "showSubtitle":true,
+      "lazy":false,
+      "backgroundStroke": 'transparent',
+      "backgroundGradientStopColor":'transparent'
+      
+      
+      })
+ 
    
     
     
   ],
-  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService//{
+  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService, BsModalService, BsModalRef//{
    // provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
  // }
 ],

@@ -1,14 +1,14 @@
 <ul class="items-list">
-    <li *ngFor="let educacion of edu">
+    <li *ngFor="let edu of edu">
       <div class="data-container" style="border-style: double; margin-bottom: 10px;">
         <div class="logo-image-container">
-          <img class="logo-image" [src]="educacion.link">
+          <img class="logo-image" src=url({{edu.link}})>
         </div>
         <div class="list-info">
           <div>
-            <h3>{{educacion.institucion}}</h3>
-            <h3>{{educacion.titulo}}</h3>
-            <p><time>{{educacion.fecha}}</time> </p>
+            <h3>{{edu.institucion}}</h3>
+            <h3>{{edu.titulo}}</h3>
+            <p><time>{{edu.fecha}}</time> </p>
           </div>
         </div>
       </div>

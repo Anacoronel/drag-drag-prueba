@@ -7,15 +7,15 @@ export class Edu {
     link: string="";
     fecha: string="";
     titulo: string="";
-    persona:{ id:any};
-    constructor(id:any, institucion:any, link:string, fecha:string, titulo:string, persona:{id:any}){
+    persona_id:any;
+    constructor(id:any, institucion:string, link:string, fecha:string, titulo:string, persona_id:any){
 
         this.id=id;
         this.institucion=institucion;
         this.link=link;
         this.fecha=fecha;
         this.titulo=titulo;
-        this.persona=persona;
+        this.persona_id=persona_id;
     }
     }
 

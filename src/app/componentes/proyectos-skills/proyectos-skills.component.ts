@@ -4,7 +4,9 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import {Proy} from '../../models/Proy';
-import {Skill} from '../../models/Skill'
+import {Skill} from '../../models/Skill';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @Component({
   selector: 'app-proyectos-skills',
   templateUrl: './proyectos-skills.component.html',
@@ -18,7 +20,10 @@ export class ProyectosSkillsComponent implements OnInit {
   id:any;
   color: ThemePalette="primary";
   mode: ProgressSpinnerMode = 'determinate';
-  value:string="";
+  
+
+
+  value:any;
   link:string="";
   date:string=";"
   texto:string="";

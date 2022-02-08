@@ -1,25 +1,79 @@
 <div class="container">
   <div class="card-group">
     <div class="card">
-      <div class="card-body">
-        <h3 class="card-title">Educacion</h3>
 
+      <div class="card-body">
         <div>
-          <a href="#" class="agregar"><i class="fa fa-plus" data-toggle="modal" data-target="#agregaedu"></i></a>
+          <h3 class="card-title">Educacion <a href="#" class="icon3"><i class="fa fa-plus"
+                (click)="openModal2(templateed)"></i></a>
+          </h3>
         </div>
-      </div>
 
-      <div class="card-body">
         <h4 class="example-h2"></h4>
 
-        <ul class="items-list educacion" class="example-h2" *ngFor="let educacion of edu">
-          <li>
-            {{ educacion.titulo }}
-            {{ educacion.link }}
-            {{ educacion.fecha }}
+        <ul class="items-list educacion" class="example-h2">
+          <li *ngFor="let edu of edu">
+            {{edu.link}}
+            {{edu.institucion}}
+            {{edu.titulo }}
+            {{ edu.fecha }}
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" data-toggle="modal" data-target="#editaedu"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" data-toggle="modal" data-target="#borraedu"></i></a>
+            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal1(template1)"></i></a>
+
+
+            <ng-template #template>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Editar Educacion</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" class="form-control"  name="id" [(ngModel)]="edu.id" />
+                  <input type="text" class="form-control"placeholder="Institucion{{edu.institucion}}" name="institucion" [(ngModel)]="edu.institucion" />
+                  <input type="text" class="form-control" placeholder="Logo{{edu.link}}"name="link" [(ngModel)]="edu.link" />
+                  <input type="text" class="form-control"placeholder="Fecha{{edu.fecha}}" name="fecha" [(ngModel)]="edu.fecha" />
+                  <input type="text" class="form-control" placeholder="Titulo{{edu.titulo}}"name="titulo" [(ngModel)]="edu.titulo" />
+                  <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="edu.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="editarEdu(edu)">Guardar</button>
+                </div>
+              </form>
+            </ng-template>
+
+
+
+            <ng-template #template1>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Eliminar Educacion</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  Esta seguro quiere borrar este registro?
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="edu.id" />
+                  <input type="text" class="form-control" name="institucion" [(ngModel)]="edu.institucion" />
+                  <input type="text" class="form-control" name="link" [(ngModel)]="edu.link" />
+                  <input type="text" class="form-control" name="fecha" [(ngModel)]="edu.fecha" />
+                  <input type="text" class="form-control" name="titulo" [(ngModel)]="edu.titulo" />
+                  <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="edu.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="deleteEdu(edu)">Borrar</button>
+                </div>
+              </form>
+            </ng-template>
+
+            <!-- Modal -->
           </li>
         </ul>
 
@@ -35,297 +89,145 @@
              </p>
             -->
         <p class="card-text"><small class="text-muted"></small></p>
+        <ng-template #templateed>
+          <form>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Agregar Educacion</h4>
+              <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true"></span>
+              </i>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+              <input type="text" class="form-control" placeholder="Institucion" name="institucion"
+                [(ngModel)]="institucion" />
+              <input type="text" class="form-control" placeholder="Link" name="link" [(ngModel)]="link" />
+              <input type="text" class="form-control" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" />
+              <input type="text" class="form-control" placeholder="Titulo" name="titulo" [(ngModel)]="titulo" />
+              <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="agregarEdu()">Guardar</button>
+            </div>
+          </form>
+        </ng-template>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="agregaedu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Agregar Educacion
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-            <input type="text" class="form-control" name="institucion" placeholder="Institucion"
-              [(ngModel)]="institucion" />
-            <input type="text" class="form-control" name="link" placeholder="Logo" [(ngModel)]="link" />
-            <input type="text" class="form-control" name="fecha" placeholder="Fecha" [(ngModel)]="fecha" />
-            <input type="text" class="form-control" name="titulo" placeholder="Titulo" [(ngModel)]="titulo" />
-            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="editaedu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Editar Educacion
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-            <input type="text" class="form-control" name="institucion" placeholder="Institucion"
-              [(ngModel)]="institucion" />
-            <input type="text" class="form-control" name="link" placeholder="Logo" [(ngModel)]="link" />
-            <input type="text" class="form-control" name="fecha" placeholder="Fecha" [(ngModel)]="fecha" />
-            <input type="text" class="form-control" name="titulo" placeholder="Titulo" [(ngModel)]="titulo" />
-            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="borraedu" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Eliminar Educacion
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">Esta seguro de borrar este registro?</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Eliminar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
-
+<!--------------------------------------Experiencia----------------------------->
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Experiencia</h3>
         <div>
-          <a href="#" class="agregar"><i class="fa fa-plus" data-toggle="modal" data-target="#agregaexp"></i></a>
+          <h3 class="card-title">Experiencia <a href="#" class="icon3"><i class="fa fa-plus"
+                (click)="penModaexp(templateexp)"></i></a>
+          </h3>
         </div>
-      </div>
 
-      <div class="card-body">
         <h4 class="example-h2"></h4>
         <ul class="experiencia" *ngFor="let exp of exp">
-          {{
-          exp.puesto
-          }}>
-          <li>
-            {{ exp.empresa }}
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" data-toggle="modal" data-target="#editaexp"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" data-toggle="modal" data-target="#Deleteexp"></i></a>
+          <li>
+            {{exp.puesto}}
+            {{ exp.empresa }}
+            {{exp.fecha}}-{{exp.fechaHasta}}
+
+            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal1(template1)"></i></a>
+            <ng-template #template>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Editar Experiencia</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="exp.id" />
+                  <input type="text" class="form-control" placeholder="Empresa{{exp.empresa}}" name="empresa" [(ngModel)]="exp.empresa" />
+                  <input type="text" class="form-control" name="link"placeholder="Logo{{exp.link}}" [(ngModel)]="exp.link" />
+                  <input type="text" class="form-control" name="fecha" placeholder="Fecha{{exp.fecha}}"[(ngModel)]="exp.fecha" />
+                  <input type="text" class="form-control" name="fechaHasta"placeholder="Fecha Hasta{{exp.fechaHasta}}" [(ngModel)]="exp.fechaHasta" />
+
+                  <input type="text" class="form-control" name="puesto" [(ngModel)]="exp.puesto" />
+                  <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="exp.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="editarExp(exp)">Guardar</button>
+                </div>
+              </form>
+            </ng-template>
+
+
+
+            <ng-template #template1>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Eliminar Experiencia</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  Esta seguro quiere borrar este registro?
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="exp.id" />
+                  <input type="hidden" class="form-control" name="institucion" [(ngModel)]="exp.empresa" />
+                  <input type="hidden" class="form-control" name="link" [(ngModel)]="exp.link" />
+                  <input type="hidden" class="form-control" name="fecha" [(ngModel)]="exp.fecha" />
+                  <input type="hidden" class="form-control" name="fecha" [(ngModel)]="exp.fechaHasta" />
+                  <input type="hidden" class="form-control" name="titulo" [(ngModel)]="exp.puesto" />
+                  <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="exp.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="deleteExp(exp)">Borrar</button>
+                </div>
+              </form>
+            </ng-template>
+
+
           </li>
         </ul>
-      </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="agregaexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Agregar Experiencia
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-            <input type="text" class="form-control" name="empresa" placeholder="Empresa"
-              [(ngModel)]="empresa" />
-            <input type="text" class="form-control" name="link" placeholder="Logo" [(ngModel)]="link" />
-            <input type="text" class="form-control" name="fecha" placeholder="Fecha" [(ngModel)]="date" />
-            <input type="text" class="form-control" name="puesto" placeholder="Puesto" [(ngModel)]="titulo" />
-            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
+        <ng-template #templateexp>
+          <form>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Agregar Experiencia</h4>
+              <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true"></span>
+              </i>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+              <input type="text" class="form-control" placeholder="Empresa" name="empresa"
+                [(ngModel)]="empresa" />
+              <input type="text" class="form-control" placeholder="Link" name="link" [(ngModel)]="link" />
+              <input type="text" class="form-control" placeholder="Fecha" name="fecha" [(ngModel)]="fecha" />
+              <input type="text" class="form-control" placeholder="Fecha Hasta" name="fechaHasta" [(ngModel)]="fechaHasta" />
+              <input type="text" class="form-control" placeholder="Puesto" name="puesto" [(ngModel)]="puesto" />
+              <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="agregarExp()">Guardar</button>
+            </div>
+          </form>
+        </ng-template>
       </div>
     </div>
     <!-- Modal -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="editaexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Editar Experiencia
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-            <input type="text" class="form-control" name="empresa" placeholder="Empresa"
-              [(ngModel)]="empresa" />
-            <input type="text" class="form-control" name="link" placeholder="Logo" [(ngModel)]="link" />
-            <input type="text" class="form-control" name="fecha" placeholder="Fecha" [(ngModel)]="date" />
-            <input type="text" class="form-control" name="puesto" placeholder="Puesto" [(ngModel)]="titulo" />
-            <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="Deleteexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">
-              Eliminar Experiencia
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">Quiere eliminar este registro?</div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-primary">Eliminar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal -->
+    
   </div>
 
   <footer>
     <div id="footer1"></div>
     <div id="footer2"></div>
   </footer>
+
 </div>
-
-<!--
-<div class="container">
-<div class="card-group">
-    <div class="card">
-    <div class="card-body">
-        <h3 class="card-title">Educacion<a class="icon3"><i class="fa fa-pencil" >
-
-
-        </i></a>
-        <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h3>
-    <p class="card-text"id="edu">
-    -->
-<!--<div class="row">-->
-<!--
-        <div class="logouni"><img src="../assets/imgs/Logo-USAL.jpg" alt="" class="logouni"></div>
-        <div class>
-        <p class="card-text"><small class="text-muted"id="edu1">Lic en Turismo<br>1991-1995</small></p>
-        <div class>
-        <div class="logoargp"><img src="../assets/imgs/IMG-20211216-WA0013.jpg" alt="" class="logoargp"></div></div>
-
-
-         <p class="card-text"><small class="text-muted"id="edu2">Full web stack jr.<br>2021-2022</small></p></div></div>
-        </div>
-    
-           <div class="card">
-    <div class="card">
-    <div class="card-body">
-    <h3 class="card-title">Experiencia<a href="#" class="icon3"><i class="fa fa-pencil"></i></a>
-        <a href="#" class="icon4"><i class="fa fa-trash"></i></a></h3>
-
-    <p class="card-text">
-        </p>
-    <p class="card-text"><small class="text-muted"><ul class="list">
-        <li>Desarrollo web 2021-2022
-        </li>
-        <li>Administrativa contable 
-        2000- actualidad</li>
-        <li>Secretaria Ejecutiva
-        1997-2000</li>
-        </ul>
-</small></p>
--->
-
-<!-- Modal -->
-<!--
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-
-<footer>
-    <div id="footer1">
-    </div>
-    <div id="footer2">
-    </div>
-</footer>
-</div>
--->

@@ -18,12 +18,20 @@ mat-progress-spinner{
 }
 .skills{
   list-style: none;
+  
+}
+.s{
+display:flex;
+flex-wrap:wrap;
+justify-self: stretch;
+justify-content: space-between;
+}
+.sk1{
+justify-self: right;
 }
 
 .card-body{
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: center;
-justify-content: space-between;
 }

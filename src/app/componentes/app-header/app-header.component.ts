@@ -5,7 +5,6 @@ import{Ubicacion} from '../../models/Ubicacion';
 import { Persona } from 'src/app/models/Persona';
 import { PersonaService } from 'src/app/servicios/persona.service';
 import { identifierName } from '@angular/compiler';
-import { UbicacionService } from 'src/app/servicios/ubicacion.service';
 
 @Component({
   selector: 'app-app-header',
@@ -14,12 +13,11 @@ import { UbicacionService } from 'src/app/servicios/ubicacion.service';
 })
 export class AppHeaderComponent implements OnInit {
 
-   acercade:Acercade[]=[];
+   acercade:Acercade[]=[]
   
-    persona:any[]=[];
-    ubicacion:any[]=[];
+    persona:Persona[]=[]
 
-id:any;
+  id:any;
  nombre:string="";
  fotoperfil:string="";
  texto:string=";"
@@ -33,7 +31,7 @@ id:any;
 
   
 
-  constructor(private headerService: HeaderService, private personaService:PersonaService, private ubicacionService:UbicacionService) {
+  constructor(private headerService: HeaderService, private personaService:PersonaService) {
 
 
     this.headerService.obtenerAcerca().subscribe((acercade) => {
@@ -46,10 +44,7 @@ id:any;
       this.persona=persona;
     });
 
-    this.personaService.obtenerUbicacion().subscribe((ubicacion) => {
-      console.log(ubicacion);
-      this.ubicacion=ubicacion;
-    });
+   
 
   }
   ngOnInit(): void {

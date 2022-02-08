@@ -17,20 +17,20 @@
     </div>
   
     <div class="jumbotron text-white jumbotron-image shadow" 
-        style="background-image: url(../assets/imgs/pexels-photo-949587.jpeg);">
-        <h2  id="nombre">{{nombre}}
+    *ngFor="let persona of persona" style="background-image:{{persona.fotoback}};">
+        <h2  id="nombre">{{persona.nombre}}
             <br><br>
         </h2>
         </div>
         <div>
-        <img class="fotodeperfil" src="https://pbs.twimg.com/profile_images/1382785431436193796/RYIvzD5X_400x400.jpg" [src]="fotoperfil" alt="fotoperfil">
-        <p class="info" id="info1"> {{descripcion}}
+        <img class="fotodeperfil" *ngFor="let persona of persona" [src]="persona.fotoperfil" alt="fotoperfil">
+        <p class="info" id="info1" *ngFor="let persona of persona"> {{persona.descripcion}}
             </p>  
-         <p class="info">
-                {{ciudad}}</p>
-         <p class="info">
-            {{pais}} <a href="#"id="icon1"><i class="fa fa-pencil"data-toggle="modal" data-target="#editapersona"></i></a> <br>
-          <a id="mail"href={{mail}}></a>
+         <p class="info" *ngFor="let persona of persona">
+                {{persona.ciudad}}</p>
+         <p class="info" *ngFor="let persona of persona">
+            {{persona.pais}} <a href="#"id="icon1"><i class="fa fa-pencil"data-toggle="modal" data-target="#editapersona"></i></a> <br>
+          <a id="mail"  href="mailto:{{persona.mail}}"><i class="fa fa-envelope"></i> </a>
                     
             </p>
 
