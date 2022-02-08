@@ -91,12 +91,17 @@ export class EducExpComponent implements OnInit {
       console.log(exp);
       this.exp = exp;
     });
+    this.portfolioService.getExp(this.id).subscribe((exp) => {
+      console.log(exp);
+      this.id = exp.id;
+    });
   }
 
   deleteEdu(edu: Edu) {
     console.log(edu.id);
     this.edu = this.edu.filter((e) => e !== edu);
     this.portfolioService.deleteEdu(edu).subscribe();
+    this.modalService.hide()
   }
 
   agregarEdu() {
@@ -107,7 +112,8 @@ export class EducExpComponent implements OnInit {
     this.onAddEdu.emit(newEdu);
     this.portfolioService.addEdu(newEdu).subscribe((dato) => {
       console.log(dato);
-    });
+    });    this.modalService.hide()
+
     this.portfolioService.obtenerEdu();
 
   }
@@ -124,6 +130,8 @@ export class EducExpComponent implements OnInit {
 
     this.onEditEdu.emit(edu);
     this.portfolioService.editEdu(edu).subscribe((edu) => {});
+    this.modalService.hide()
+
     this.portfolioService.obtenerEdu();
 
   }
@@ -141,6 +149,8 @@ export class EducExpComponent implements OnInit {
 
     this.onEditExp.emit(exp);
     this.portfolioService.editExp(exp).subscribe((exp) => {});
+    this.modalService.hide()
+
     this.portfolioService.obtenerExp();
 
   }
@@ -149,6 +159,8 @@ export class EducExpComponent implements OnInit {
     console.log(exp.id);
     this.exp = this.exp.filter((e) => e !== exp);
     this.portfolioService.deleteExp(exp).subscribe();
+    this.modalService.hide()
+
     }
   
   
@@ -163,5 +175,7 @@ export class EducExpComponent implements OnInit {
       console.log(dato);
     });
     this.portfolioService.obtenerExp();
+    this.modalService.hide()
+
   }
 }

@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Proyectos</h3>
-        <div><a href="#" class="agregar"><i class="fa fa-plus" data-toggle="modal" data-target="#agregapro"></i></a>
+        <div><a href="#" class="icon3"><i class="fa fa-plus" data-toggle="modal" data-target="#agregapro"></i></a>
         </div>
 
 
@@ -111,32 +111,36 @@
 
     <div class="card">
       <div class="card-body">
-        <h3 class="card-title">Hard Skills</h3>
-        <div><a href="#" class="agregar"><i class="fa fa-plus" data-toggle="modal" data-target="#agrega"></i></a></div>
+        <div>
+        <h3 class="card-title">Hard Skills <a href="#" class="icon3"><i class="fa fa-plus" data-toggle="modal" data-target="#agrega"></i></a></h3>
+        </div>
         <div class="s">
-          <h4 class="example-h2"></h4>
-          <ul class="skills" *ngFor="let skill of skill">
-            <li>
+          <h4 class="example-h2"></h4>              
+
+          <ul class="skills" >
+            <li *ngFor="let skill of skill">
               <circle-progress
                [percent]="skill.value"
                [title]="skill.texto" 
                [subtitle]="skill.value"
-               [radius]="20" 
+               [radius]="35"
                [outerStrokeWidth]="13"
-                [innerStrokeWidth]="8" 
+                [innerStrokeWidth]="13" 
                 [outerStrokeColor]="'#0EA9D6'" 
-                [innerStrokeColor]="''" 
+                [innerStrokeColor]="'#adb5bd'" 
                 [animation]="true"
-                [animationDuration]="300" 
+                [animationDuration]="400" 
                 [lazy]="false" 
                 ></circle-progress>
+                
             </li>
           </ul>
+        </div>
 
           <!--<ul class="skills" *ngFor="let skill of skill">
           <div>
             <li><p>{{skill.texto}}</p>
-              <p>{{skill.value}}%</p>
+              <p>{{skill.value}}</p>
               <div>
                 <mat-progress-spinner class="example-margin" [color]="color" diameter=45 [mode]="mode"
                   [value]="skill.value"[title]="skill.texto">
@@ -147,10 +151,10 @@
         </ul>-->
           <div>
             <a href="#" class="icon3 sk1"><i class="fa fa-pencil" data-toggle="modal"
-                data-target="#exampleModalCenter"></i></a>
-            <a href="#" class="icon4 sk1"><i class="fa fa-trash" data-toggle="modal" data-target="#Delete"></i></a>
+              data-target="#exampleModalCenter"></i></a>
+          <a href="#" class="icon4 sk1"><i class="fa fa-trash" data-toggle="modal" data-target="#Delete"></i></a>
           </div>
-        </div>
+        
         <!-- Modal -->
         <div class="modal fade" id="agrega" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
           aria-hidden="true">

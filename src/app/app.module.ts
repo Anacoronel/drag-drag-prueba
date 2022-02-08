@@ -1,7 +1,6 @@
 import { UbicacionService } from './servicios/ubicacion.service';
 import { AcercaService } from './servicios/acerca.service';
 import { IdiomaService } from './servicios/idioma.service';
-import { MatTableModule } from '@angular/material/table';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -38,15 +37,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PortfolioService } from './servicios/portfolio.service';
 import { RouterModule } from '@angular/router';
-import { AddComponent } from './componentes/educ-exp/add/add.component';
-import { AddEduComponent } from './componentes/educ-exp/add-edu/add-edu.component';
 import { UiService } from './servicios/ui.service';
-import { AddProyComponent } from './componentes/proyectos-skills/add-proy/add-proy.component';
-import { AddskillComponent } from './componentes/proyectos-skills/addskill/addskill.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
-import { FormEduComponent } from './componentes/educ-exp/form-edu/form-edu.component';
-import { EducacionComponent } from './componentes/educacion/educacion.component';
 import { HeaderService } from './servicios/header.service';
 import { PersonaService } from './servicios/persona.service';
 
@@ -58,14 +51,9 @@ import { PersonaService } from './servicios/persona.service';
     EducExpComponent,
     ProyectosSkillsComponent,
     SobremiComponent,
-    AddComponent,
-    AddEduComponent,
-    AddProyComponent,
-    AddskillComponent,
     LoginComponent,
     PortfolioComponent,
-    FormEduComponent,
-    EducacionComponent
+    
     
 
   ],
@@ -80,17 +68,20 @@ import { PersonaService } from './servicios/persona.service';
     MatCardModule, MatCheckboxModule,
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule,
-    FormsModule,CdkTableModule, MatTableModule,
-    MatDialogModule, MatFormFieldModule, ModalModule,
+    FormsModule,CdkTableModule,
+     ModalModule,
     MatInputModule, NgCircleProgressModule.forRoot({
       // set defaults here
-      "radius": 10,
-      "outerStrokeWidth": 10,
-      "innerStrokeWidth": 5,
+      "radius": 34,
+      "outerStrokeWidth": 9,
+      "innerStrokeWidth": 9,
       "showBackground": false,
       "startFromZero": false, 
       "showTitle":true,
+      "space":-11.5,
       "showSubtitle":true,
+      "subtitleFontSize":"20",
+      "titleFontSize":"15",
       "lazy":false,
       "backgroundStroke": 'transparent',
       "backgroundGradientStopColor":'transparent'

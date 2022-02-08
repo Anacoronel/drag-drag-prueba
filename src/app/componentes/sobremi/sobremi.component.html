@@ -6,7 +6,6 @@
       <div class="card-body">
         <h3 class="card-title">Acerca de mi</h3>
          <a href="#"class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaacerca"></i></a>
-            
         <p class="text-muted"><small class="text-muted center" *ngFor="let acercade of acercade">{{acercade.texto}}</small>  </p>
         <p class="card-text"></p>
       </div>
@@ -36,13 +35,14 @@
   </div>
   <!-- Modal -->
     </div>
+
    
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title">Idiomas</h3>
-                <div><a href="#" class="agregar"><i class="fa fa-plus"data-toggle="modal" data-target="#agregaidioma"></i></a></div>
-                <p class="card-text"></p>
-                <p class="card-text"><small class="text-muted">
+          <div>
+            <h3 class="card-title">Idiomas <a href="#" class="icon3"><i class="fa fa-plus"data-toggle="modal" data-target="#agregaidioma"></i></a></h3>
+                </div>
+                <h4 class="example-h2"></h4>                
 
                     <ul class="idiomas">
                            <li *ngFor="let idiomas of idiomas">
@@ -54,7 +54,6 @@
                          </li>
                      </ul>
 
-                </small></p>
         </div>
 
 

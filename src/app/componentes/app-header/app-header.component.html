@@ -17,10 +17,11 @@
     </div>
   
     <div class="jumbotron text-white jumbotron-image shadow" 
-    *ngFor="let persona of persona" style="background-image:{{persona.fotoback}};">
-        <h2  id="nombre">{{persona.nombre}}
+    *ngFor="let persona of persona"style="background-image:url(../assets/imgs/pexels-photo-949587.jpeg);">
+        <h2 id="nombre">{{persona.nombre}}
             <br><br>
-        </h2>
+            </h2>
+      
         </div>
         <div>
         <img class="fotodeperfil" *ngFor="let persona of persona" [src]="persona.fotoperfil" alt="fotoperfil">

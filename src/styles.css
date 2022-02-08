@@ -58,12 +58,12 @@
       
   }
   #nombre{
-  margin-left: 6.5rem;
-  
-
-  
-  
+  position:relative;
+  left:8rem;
+  top:5rem;
   }
+  
+  
   .fotodeperfil{
       border-radius: 50%;
       height: 100px;

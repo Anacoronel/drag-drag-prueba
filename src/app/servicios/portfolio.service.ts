@@ -80,7 +80,7 @@ deleteEdu(edu: Edu | number): Observable<Edu> {
 deleteExp(exp:Exp | number):Observable<any>{
   const id = typeof exp === 'number' ? exp : exp.id;
 
-  const url = `${this.apiUrl+ '/educacion/delete'}/${id}`;
+  const url = `${this.apiUrl+ '/experiencia/delete'}/${id}`;
     return this.http.delete<Exp>(url, httpOptions);
 }
 
