@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Proyectos</h3>
-        <div><a href="#" class="icon3"><i class="fa fa-plus" data-toggle="modal" data-target="#agregapro"></i></a>
+        <div><a href="#" class="icon3"><i class="fa fa-plus" (click)="openModal(templateed)"></i></a>
         </div>
 
 
@@ -13,8 +13,58 @@
         <ul class="proyectos" *ngFor="let proy of proy">{{proy.texto}}
           <li>{{proy.link}}
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" data-toggle="modal" data-target="#editapro"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" data-toggle="modal" data-target="#borrapro"></i></a>
+            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal(template)"></i></a>
+            <ng-template #template>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Editar Proyecto</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="proy.id" />
+                  <input type="text" class="form-control" placeholder="Fecha{{proy.date}}" name="date" [(ngModel)]="proy.date" />
+                  <input type="text" class="form-control" name="link"placeholder="Logo{{proy.link}}" [(ngModel)]="proy.link" />
+                  <input type="text" class="form-control" name="text" placeholder="Proyecto{{proy.texto}}"[(ngModel)]="proy.texto" />
+                                <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="proy.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="editarProy(proy)">Guardar</button>
+                </div>
+              </form>
+            </ng-template>
+
+
+
+            <ng-template #template>
+              <form>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Eliminar Proyecto</h4>
+                  <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                    <span aria-hidden="true"></span>
+                  </i>
+                </div>
+                <div class="modal-body">
+                  Esta seguro quiere borrar este registro?
+                  <input type="hidden" class="form-control" name="id" [(ngModel)]="proy.id" />
+                  <input type="text" class="form-control" name="institucion" [(ngModel)]="proy.date" />
+                  <input type="text" class="form-control" name="link" [(ngModel)]="proy.link" />
+                  <input type="text" class="form-control" name="fecha" [(ngModel)]="proy.texto" />
+                  <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="proy.persona_id" />
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="deleteProy(proy)">Borrar</button>
+                </div>
+              </form>
+            </ng-template>
+
+
           </li>
         </ul>
 
@@ -31,79 +81,29 @@
               -->
         <p class="card-text"><small class="text-muted"></small></p>
       </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="agregapro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Agregar Proyecto</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-              <input type="text" class="form-control" name="fecha" placeholder="Fecha" [(ngModel)]="date" />
-              <input type="text" class="form-control" name="link" placeholder="Link" [(ngModel)]="link" />
-              <input type="text" class="form-control" name="texto" placeholder="Text" [(ngModel)]="texto" />
-
-              <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+      <ng-template #templateed>
+        <form>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Agregar Proyecto</h4>
+            <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+              <span aria-hidden="true"></span>
+            </i>
           </div>
-        </div>
-      </div>
-      <!-- Modal -->
-
-      <!-- Modal -->
-      <div class="modal fade" id="editapro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Editar Proyecto</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+          <div class="modal-body">
+            <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+            <input type="text" class="form-control" placeholder="Fecha" name="date"
+              [(ngModel)]="date" />
+            <input type="text" class="form-control" placeholder="Link" name="link" [(ngModel)]="link" />
+            <input type="text" class="form-control" placeholder="Proyecto" name="texto" [(ngModel)]="texto" />
+             <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
           </div>
-        </div>
-      </div>
-      <!-- Modal -->
 
-      <!-- Modal -->
-      <div class="modal fade" id="borrapro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Proyecto</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Esta seguro de borrar este registro? </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Eliminar</button>
-            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="agregarProy()">Guardar</button>
           </div>
-        </div>
-      </div>
-      <!-- Modal -->
+        </form>
+      </ng-template>
 
     </div>
 
@@ -112,7 +112,7 @@
     <div class="card">
       <div class="card-body">
         <div>
-        <h3 class="card-title">Hard Skills <a href="#" class="icon3"><i class="fa fa-plus" data-toggle="modal" data-target="#agrega"></i></a></h3>
+        <h3 class="card-title">Hard Skills <a href="#" class="icon3"><i class="fa fa-plus" (click)="openModal(templateed)"></i></a></h3>
         </div>
         <div class="s">
           <h4 class="example-h2"></h4>              
@@ -121,8 +121,8 @@
             <li *ngFor="let skill of skill">
               <circle-progress
                [percent]="skill.value"
-               [title]="skill.texto" 
-               [subtitle]="skill.value"
+               [title]="skill.value" 
+               [subtitle]="skill.texto"
                [radius]="35"
                [outerStrokeWidth]="13"
                 [innerStrokeWidth]="13" 
@@ -132,11 +132,65 @@
                 [animationDuration]="400" 
                 [lazy]="false" 
                 ></circle-progress>
+                <div>
+                  <a href="#" class="icon3 sk1"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
+                <a href="#" class="icon4 sk1"><i class="fa fa-trash" (click)="openModal(template)"></i></a>
+                </div>
+              
+      
+                <ng-template #template>
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Editar Skills</h4>
+                      <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                        <span aria-hidden="true"></span>
+                      </i>
+                    </div>
+                    <div class="modal-body">
+                      <input type="hidden" class="form-control" name="id" [(ngModel)]="skill.id" />
+                      <input type="text" class="form-control" placeholder="Titulo{{skill.texto}}" name="date" [(ngModel)]="skill.texto" />
+                      <input type="text" class="form-control" name="link"placeholder="Logo{{skill.value}}" [(ngModel)]="skill.value" />
+                       <input type="hidden" class="form-control" name="persona_id"[(ngModel)]="skill.persona_id" />
+                    </div>
+        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="editarSkill(skill)">Guardar</button>
+                    </div>
+                  </form>
+                </ng-template>
+        
+        
+        
+                <ng-template #template>
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Eliminar Skill</h4>
+                      <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                        <span aria-hidden="true"></span>
+                      </i>
+                    </div>
+                    <div class="modal-body">
+                      Esta seguro quiere borrar este registro?
+                      <input type="hidden" class="form-control" name="id" [(ngModel)]="skill.id" />
+                      <input type="text" class="form-control" name="institucion" [(ngModel)]="skill.texto" />
+                      <input type="text" class="form-control" name="link" [(ngModel)]="skill.value" />
+                      <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="skill.persona_id" />
+                    </div>
+        
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="deleteSkill(skill)">Borrar</button>
+                    </div>
+                  </form>
+                </ng-template>
+        
+        
                 
             </li>
           </ul>
         </div>
-
+        
           <!--<ul class="skills" *ngFor="let skill of skill">
           <div>
             <li><p>{{skill.texto}}</p>
@@ -149,89 +203,37 @@
             </li>
           </div>
         </ul>-->
-          <div>
-            <a href="#" class="icon3 sk1"><i class="fa fa-pencil" data-toggle="modal"
-              data-target="#exampleModalCenter"></i></a>
-          <a href="#" class="icon4 sk1"><i class="fa fa-trash" data-toggle="modal" data-target="#Delete"></i></a>
-          </div>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="agrega" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Agregar Skill</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-                <input type="text" class="form-control" name="titulo" placeholder="Habilidad" [(ngModel)]="texto" />
-                <input type="text" class="form-control" name="value" placeholder="Progreso" [(ngModel)]="value" />
-                <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
+                 <!-- Modal -->
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+
+
+        <ng-template #templateed>
+          <form>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Agregar Skill</h4>
+              <i class="fa fa-times close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true"></span>
+              </i>
             </div>
-          </div>
-        </div>
-        <!-- Modal -->
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Editar Skill</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
-                <input type="text" class="form-control" name="titulo" placeholder="Habilidad" [(ngModel)]="texto" />
-                <input type="text" class="form-control" name="value" placeholder="Progreso" [(ngModel)]="value" />
-                <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+            <div class="modal-body">
+              <input type="hidden" class="form-control" name="id" [(ngModel)]="id" />
+              <input type="text" class="form-control" placeholder="Fecha" name="date"
+                [(ngModel)]="date" />
+              <input type="text" class="form-control" placeholder="Link" name="link" [(ngModel)]="link" />
+              <input type="text" class="form-control" placeholder="Proyecto" name="texto" [(ngModel)]="texto" />
+               <input type="hidden" class="form-control" name="persona_id" [(ngModel)]="persona_id" />
             </div>
-          </div>
-        </div>
-        <!-- Modal -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="Delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Eliminar Skill</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Quiere eliminar este registro?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Eliminar</button>
-              </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="modalRef?.hide()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="agregarSkill()">Guardar</button>
             </div>
-          </div>
-        </div>
-        <!-- Modal -->
+          </form>
+        </ng-template>
+  
+
+
+               <!-- Modal -->
 
 
 

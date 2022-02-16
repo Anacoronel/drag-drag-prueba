@@ -20,6 +20,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -42,6 +43,10 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { HeaderService } from './servicios/header.service';
 import { PersonaService } from './servicios/persona.service';
+import { RegistroComponent } from './componentes/login/registro.component';
+import { AuthService } from './servicios/auth.service';
+import { TokenService } from './servicios/token.service';
+import { InterceptorService } from './servicios/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +58,7 @@ import { PersonaService } from './servicios/persona.service';
     SobremiComponent,
     LoginComponent,
     PortfolioComponent,
+    RegistroComponent,
     
     
 
@@ -69,7 +75,7 @@ import { PersonaService } from './servicios/persona.service';
     MatButtonModule,MatButtonToggleModule,
     MatIconModule, MatListModule, MatProgressSpinnerModule,
     FormsModule,CdkTableModule,
-     ModalModule,
+     ModalModule,ToastrModule.forRoot(),
     MatInputModule, NgCircleProgressModule.forRoot({
       // set defaults here
       "radius": 34,
@@ -93,9 +99,9 @@ import { PersonaService } from './servicios/persona.service';
     
     
   ],
-  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService, BsModalService, BsModalRef//{
-   // provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
- // }
+  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService, BsModalService,TokenService, AuthService, BsModalRef,{
+   provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
+  }
 ],
   bootstrap: [AppComponent]
 })
