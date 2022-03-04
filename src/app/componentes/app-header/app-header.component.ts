@@ -1,10 +1,10 @@
 import { HeaderService } from './../../servicios/header.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Acercade } from '../../models/Acercade';
-import{Ubicacion} from '../../models/Ubicacion';
 import { Persona } from 'src/app/models/Persona';
 import { PersonaService } from 'src/app/servicios/persona.service';
-import { identifierName } from '@angular/compiler';
+import { Router } from '@angular/router';
+import{TokenService} from '../../servicios/token.service'
 
 @Component({
   selector: 'app-app-header',
@@ -12,26 +12,26 @@ import { identifierName } from '@angular/compiler';
   styleUrls: ['./app-header.component.css'],
 })
 export class AppHeaderComponent implements OnInit {
-
    acercade:Acercade[]=[]
   
     persona:Persona[]=[]
 
-  id:any;
- nombre:string="";
- fotoperfil:string="";
- texto:string=";"
- descripcion:string="";
- fotoback:string="";
- mail:string="";
- ciudad:string="";
- pais:string="";
-
+   id:any;
+   nombre:string="";
+   fotoperfil:string="";
+   texto:string=";"
+   descripcion:string="";
+   fotoback:string="";
+   mail:string="";
+   ciudad:string="";
+    pais:string="";
+    isLogged=false;
 
 
   
 
-  constructor(private headerService: HeaderService, private personaService:PersonaService) {
+  constructor(private headerService: HeaderService, private personaService:PersonaService, private router: Router, private tokenService: TokenService) 
+  {
 
 
     this.headerService.obtenerAcerca().subscribe((acercade) => {
@@ -48,9 +48,19 @@ export class AppHeaderComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    if (this.tokenService.getToken()){
+      this.isLogged=true;
+    }
     
 
    
   }
+  signout():void{
+    this.tokenService.logOut();
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false; 
+    this.router.navigate([this.router.url]);
+
+  }
+  
+  
 }

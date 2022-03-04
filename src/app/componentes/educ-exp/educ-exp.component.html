@@ -4,22 +4,25 @@
 
       <div class="card-body">
         <div>
-          <h3 class="card-title">Educacion <a href="#" class="icon3"><i class="fa fa-plus"
+          <h3 class="card-title">Educacion <a href="#" class="icon3" *ngIf="isLogged"><i class="fa fa-plus"
                 (click)="openModal2(templateed)"></i></a>
           </h3>
         </div>
 
         <h4 class="example-h2"></h4>
 
-        <ul class="items-list educacion" class="example-h2">
+        <ul class="items-list educacion" class=" row">
           <li *ngFor="let edu of edu">
-            {{edu.link}}
-            {{edu.institucion}}
-            {{edu.titulo }}
-            {{ edu.fecha }}
+            <div class="col-2 m-4">
+           <img class="img-fluid"[src]="edu.link"></div>
+           <div class="col-10">
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal1(template1)"></i></a>
+            <p>{{edu.institucion}}</p>
+            <p>{{edu.titulo }}</p>
+            {{ edu.fecha }}</div>
+
+            <a href="#" class="icon3"><i class="fa fa-pencil"*ngIf="isLogged" (click)="openModal(template)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash"*ngIf="isLogged" (click)="openModal1(template1)"></i></a>
 
 
             <ng-template #template>
@@ -119,21 +122,25 @@
     <div class="card">
       <div class="card-body">
         <div>
-          <h3 class="card-title">Experiencia <a href="#" class="icon3"><i class="fa fa-plus"
+          <h3 class="card-title">Experiencia <a href="#" class="icon3"*ngIf="isLogged"><i class="fa fa-plus"
                 (click)="penModaexp(templateexp)"></i></a>
           </h3>
         </div>
 
         <h4 class="example-h2"></h4>
-        <ul class="experiencia" >
+        <ul class="experiencia" class="row" >
 
           <li *ngFor="let exp of exp">
-            {{exp.puesto}}
-            {{ exp.empresa }}
-            {{exp.fecha}}-{{exp.fechaHasta}}
+            <div class="col-2 m-4">
+           <img class="img-fluid"[src]="exp.link"></div>
+           <div class="col-10">
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal1(template1)"></i></a>
+            <p>{{exp.puesto}}</p>
+            <p>{{ exp.empresa }}</p>
+            {{exp.fecha}}-{{exp.fechaHasta}}</div>
+
+            <a href="#" class="icon3"><i class="fa fa-pencil"*ngIf="isLogged" (click)="openModal(template)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash"*ngIf="isLogged" (click)="openModal1(template1)"></i></a>
             <ng-template #template>
               <form>
                 <div class="modal-header">

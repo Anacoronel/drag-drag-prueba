@@ -16,13 +16,13 @@ const routes: Routes = [
  // {path:'', redirectTo:'iniciar-sesion',pathMatch:'full'}
  { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-    {path:'',pathMatch:'full', component:PortfolioComponent}
+    {path:'',pathMatch:'full',component:PortfolioComponent}
 
   
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

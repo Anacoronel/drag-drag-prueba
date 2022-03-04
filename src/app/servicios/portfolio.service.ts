@@ -40,7 +40,14 @@ export class PortfolioService {
     return this.http.get<Exp>(url);
   }
    
-
+  getProy(id: number): Observable<Proy>{
+    const url = `${this.apiUrl+'proyecto/'}${id}`;
+    return this.http.get<Proy>(url);
+  }
+  getSkill(id: number): Observable<Skill>{
+    const url = `${this.apiUrl+'skill/'}${id}`;
+    return this.http.get<Skill>(url);
+  }
 
  obtenerExp():Observable<any[]>{
   return this.http.get<Exp[]>(this.apiUrl + "/experiencia/");
@@ -49,11 +56,40 @@ export class PortfolioService {
 obtenerProy():Observable<Proy[]>{
   return this.http.get<Proy[]>(this.apiUrl + "/proyecto/");
  }
+ addProy(proy:Proy): Observable<Proy>{
+  return this.http.post<Proy>(this.apiUrl+"/proyecto/new",proy);
+}
+editProy( proy:Proy|number): Observable<Proy>{
+  const id =  typeof proy === 'number' ? proy : proy.id;
+  return this.http.put<Proy>(`${this.apiUrl + '/proyecto/edit'}/${id}`, proy, httpOptions);
+ }
+
+ deleteProy(proy: Proy | number): Observable<Proy> {
+  const id = typeof proy === 'number' ? proy : proy.id;
+  const url = `${this.apiUrl+ '/proyecto/delete'}/${id}`;
+  return this.http.delete<Proy>(url, httpOptions);
+   
+  }
 
  obtenerSkills():Observable<Skill[]>{
   return this.http.get<Skill[]>(this.apiUrl + "/skill/");
  }
 
+ addSkill(skill:Skill): Observable<Skill>{
+  return this.http.post<Skill>(this.apiUrl+"/skill/new",skill);
+}
+
+deleteSkills(skill: Skill | number): Observable<Skill> {
+  const id = typeof skill === 'number' ? skill : skill.id;
+  const url = `${this.apiUrl+ '/skill/delete'}/${id}`;
+  return this.http.delete<Skill>(url, httpOptions);
+   
+  }
+
+editSkill( skill:Skill|number): Observable<Skill>{
+  const id =  typeof skill === 'number' ? skill : skill.id;
+  return this.http.put<Skill>(`${this.apiUrl + '/skill/edit'}/${id}`, skill, httpOptions);
+ }
  
 
 addEdu(edu:Edu): Observable<Edu>{

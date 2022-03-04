@@ -5,8 +5,8 @@
         <div class="card">
       <div class="card-body">
         <h3 class="card-title">Acerca de mi</h3>
-         <a href="#"class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaacerca"></i></a>
-        <p class="text-muted"><small class="text-muted center" *ngFor="let acercade of acercade">{{acercade.texto}}</small>  </p>
+         <a href="#"class="icon3"><i class="fa fa-pencil" *ngIf="isLogged" data-toggle="modal" data-target="#editaacerca"></i></a>
+        <p class="text-muted"><small id="acerca" class="text-muted center" *ngFor="let acercade of acercade">{{acercade.texto}}</small>  </p>
         <p class="card-text"></p>
       </div>
 
@@ -40,7 +40,7 @@
     <div class="card">
         <div class="card-body">
           <div>
-            <h3 class="card-title">Idiomas <a href="#" class="icon3"><i class="fa fa-plus"data-toggle="modal" data-target="#agregaidioma"></i></a></h3>
+            <h3 class="card-title">Idiomas <a href="#" class="icon3" *ngIf="isLogged"><i class="fa fa-plus"data-toggle="modal" data-target="#agregaidioma"></i></a></h3>
                 </div>
                 <h4 class="example-h2"></h4>                
 
@@ -49,8 +49,8 @@
                              {{idiomas.idioma}}
                              {{idiomas.nivel}}
                            
-                            <a href="#" class="icon3"><i class="fa fa-pencil"data-toggle="modal" data-target="#editaidioma"></i></a>
-                            <a href="#" class="icon4"><i class="fa fa-trash"data-toggle="modal" data-target="#borraidioma"></i></a>
+                            <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf="isLogged" data-toggle="modal" data-target="#editaidioma"></i></a>
+                            <a href="#" class="icon4"><i class="fa fa-trash" *ngIf="isLogged"data-toggle="modal" data-target="#borraidioma"></i></a>
                          </li>
                      </ul>
 

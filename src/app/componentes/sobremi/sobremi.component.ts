@@ -3,6 +3,7 @@ import { Acercade } from 'src/app/models/Acercade';
 import { Idioma } from 'src/app/models/Idioma';
 import { HeaderService } from 'src/app/servicios/header.service';
 import { IdiomaService } from 'src/app/servicios/idioma.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 
 @Component({
@@ -18,8 +19,13 @@ nivel:string="";
 texto:string="";
 idioma: string="";
 persona_id:any;
+isLogged=false;
 
-  constructor(private headerService: HeaderService, private idiomaService:IdiomaService) {
+  constructor(
+    private headerService : HeaderService, 
+    private idiomaService : IdiomaService, 
+    private tokenService : TokenService
+    ) {
    
    }
 
@@ -33,7 +39,9 @@ persona_id:any;
       console.log(data);
       this.idiomas=data;
     });
-
+    if (this.tokenService.getToken()){
+      this.isLogged=true;
+    }
 
   }
   

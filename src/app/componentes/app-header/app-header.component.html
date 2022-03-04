@@ -1,10 +1,9 @@
 
 
   <div class="container">
-       
     <div class="header">
         <div class="header_left">
-            <img id="logoarg"src="../assets/imgs/IMG-20211216-WA0013.jpg">
+            <img id="logoarg"src="../assets/imgs/imgst/APLogo-20-20.png">
           </div>
             
           <div class="header_right">   
@@ -12,7 +11,8 @@
                 <a href="https://github.com/Anacoronel/" id="sns2"><i class="fa fa-github"></i></a>
                 <a href="https://twitter.com/anacoronel" id="sns"><i class="fa fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/in/ana-coronel-90b0901b9/" id="sns3"><i class="fa fa-linkedin"></i></a>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="sign-out">Sign out</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="sign-out"*ngIf="isLogged"(click)="signout()">Sign out</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="sign-out"*ngIf="!isLogged" routerLink="/login">Sign in</button>
             </div>
     </div>
   
@@ -30,7 +30,7 @@
          <p class="info" *ngFor="let persona of persona">
                 {{persona.ciudad}}</p>
          <p class="info" *ngFor="let persona of persona">
-            {{persona.pais}} <a href="#"id="icon1"><i class="fa fa-pencil"data-toggle="modal" data-target="#editapersona"></i></a> <br>
+            {{persona.pais}} <a href="#"id="icon1"><i class="fa fa-pencil" *ngIf="isLogged" data-toggle="modal" data-target="#editapersona"></i></a> <br>
           <a id="mail"  href="mailto:{{persona.mail}}"><i class="fa fa-envelope"></i> </a>
                     
             </p>
@@ -65,7 +65,7 @@
          
     </div>
 
-
+       
     <!--
     <div class="agrego">
     <div><a href="#" id="agregar"><i class="fa fa-plus"></i></a></div>

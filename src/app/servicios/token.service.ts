@@ -10,6 +10,7 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 export class TokenService {
 
   roles: Array<string> = [];
+  isLogged=false;
 
   constructor() { }
 
@@ -54,5 +55,11 @@ export class TokenService {
 
   public logOut(): void {
     window.sessionStorage.clear();
+  }
+  public usuarioLogged():void {
+    if(this.getToken()){
+      this.isLogged=true;
+    }
+
   }
 }

@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { Edu } from '../../models/Edu';
 import { Exp } from '../../models/Exp';
 import { PortfolioService } from './../../servicios/portfolio.service';
+import { TokenService } from './../../servicios/token.service';
+
 import {
   FormBuilder,
   FormControl,
@@ -44,7 +46,7 @@ export class EducExpComponent implements OnInit {
   fechaHasta: string = '';
   persona_id: any;
   modalRef?: BsModalRef;
-
+  isLogged=false;
   subscription?: Subscription;
   form: FormGroup = new FormGroup({
     id: new FormControl(''),
@@ -61,7 +63,8 @@ export class EducExpComponent implements OnInit {
   constructor(
     private portfolioService: PortfolioService,
     private FormBuilder: FormBuilder,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private tokenService: TokenService
   ) {}
 
   openModal(template: TemplateRef<any>) {
@@ -94,6 +97,10 @@ export class EducExpComponent implements OnInit {
       console.log(exp);
       this.id = exp.id;
     });
+    if (this.tokenService.getToken()){
+      this.isLogged=true;
+    }
+    
   }
 
   deleteEdu(edu: Edu) {

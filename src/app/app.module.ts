@@ -3,7 +3,7 @@ import { AcercaService } from './servicios/acerca.service';
 import { IdiomaService } from './servicios/idioma.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './componentes/app-header/app-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,32 +12,13 @@ import { EducExpComponent } from './componentes/educ-exp/educ-exp.component';
 import { ProyectosSkillsComponent } from './componentes/proyectos-skills/proyectos-skills.component';
 import { SobremiComponent } from './componentes/sobremi/sobremi.component';
 import { AppRoutingModule } from './app-routing.module';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatButtonModule} from '@angular/material/button';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ToastrModule } from 'ngx-toastr';
-
-
-
-import {CdkTableModule} from '@angular/cdk/table';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 import { ModalModule, BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
-
-
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PortfolioService } from './servicios/portfolio.service';
-import { RouterModule } from '@angular/router';
 import { UiService } from './servicios/ui.service';
 import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
@@ -59,50 +40,48 @@ import { InterceptorService } from './servicios/interceptor.service';
     LoginComponent,
     PortfolioComponent,
     RegistroComponent,
-    
-    
+
+
 
   ],
   imports: [
-   // RouterModule.forRoot(appRoutes, {enableTracing: true}
+    // RouterModule.forRoot(routes,{enableTracing: true, onSameUrlNavigation: 'reload'}),
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
     BrowserAnimationsModule,
-    MatCardModule, MatCheckboxModule,
-    MatButtonModule,MatButtonToggleModule,
-    MatIconModule, MatListModule, MatProgressSpinnerModule,
-    FormsModule,CdkTableModule,
-     ModalModule,ToastrModule.forRoot(),
-    MatInputModule, NgCircleProgressModule.forRoot({
+
+    FormsModule,
+    ModalModule, ToastrModule.forRoot(),
+    NgCircleProgressModule.forRoot({
       // set defaults here
       "radius": 34,
       "outerStrokeWidth": 9,
       "innerStrokeWidth": 9,
       "showBackground": false,
-      "startFromZero": false, 
-      "showTitle":true,
-      "space":-11.5,
-      "showSubtitle":true,
-      "subtitleFontSize":"20",
-      "titleFontSize":"15",
-      "lazy":false,
+      "startFromZero": false,
+      "showTitle": true,
+      "space": -11.5,
+      "showSubtitle": true,
+      "subtitleFontSize": "12",
+      "titleFontSize": "10",
+      "lazy": false,
       "backgroundStroke": 'transparent',
-      "backgroundGradientStopColor":'transparent'
-      
-      
-      })
- 
-   
-    
-    
+      "backgroundGradientStopColor": 'transparent'
+
+
+    })
+
+
+
+
   ],
-  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService, BsModalService,TokenService, AuthService, BsModalRef,{
-   provide:HTTP_INTERCEPTORS, useClass:InterceptorService, multi:true
+  providers: [PortfolioService, UiService, PersonaService, HeaderService, IdiomaService, AcercaService, UbicacionService, BsModalService, TokenService, AuthService, BsModalRef, {
+    provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true
   }
-],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

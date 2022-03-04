@@ -159,10 +159,9 @@
   #sp{
       margin-left: -10px;
   }
-  .logouni{
-      height: 30px;
+  #logouni{
+      height: 3rem;
       width: auto;
-      margin-left: 1rem;
       
       
       
@@ -198,8 +197,8 @@
       list-style:none;
   
   }
-  .text-muted{
-      color:#383838;
+  #acerca{
+      color:#383838 !important;
       font-size: medium;
       
   }

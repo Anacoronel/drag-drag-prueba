@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Proyectos</h3>
-        <div><a href="#" class="icon3"><i class="fa fa-plus" (click)="openModal(templateed)"></i></a>
+        <div><a href="#" class="icon3"><i class="fa fa-plus"*ngIf="isLogged" (click)="openModal(template)"></i></a>
         </div>
 
 
@@ -11,11 +11,11 @@
 
         <h4 class="example-h2"></h4>
         <ul class="proyectos" *ngFor="let proy of proy">{{proy.texto}}
-          <li>{{proy.link}}
+          <li><a [href]='proy.link'></a>
 
-            <a href="#" class="icon3"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
-            <a href="#" class="icon4"><i class="fa fa-trash" (click)="openModal(template)"></i></a>
-            <ng-template #template>
+            <a href="#" class="icon3"><i class="fa fa-pencil" *ngIf="isLogged"(click)="openModal1(template1)"></i></a>
+            <a href="#" class="icon4"><i class="fa fa-trash"*ngIf="isLogged" (click)="openModal2(template2)"></i></a>
+            <ng-template #template1>
               <form>
                 <div class="modal-header">
                   <h4 class="modal-title pull-left">Editar Proyecto</h4>
@@ -40,7 +40,7 @@
 
 
 
-            <ng-template #template>
+            <ng-template #template2>
               <form>
                 <div class="modal-header">
                   <h4 class="modal-title pull-left">Eliminar Proyecto</h4>
@@ -81,7 +81,7 @@
               -->
         <p class="card-text"><small class="text-muted"></small></p>
       </div>
-      <ng-template #templateed>
+      <ng-template #template>
         <form>
           <div class="modal-header">
             <h4 class="modal-title pull-left">Agregar Proyecto</h4>
@@ -112,7 +112,7 @@
     <div class="card">
       <div class="card-body">
         <div>
-        <h3 class="card-title">Hard Skills <a href="#" class="icon3"><i class="fa fa-plus" (click)="openModal(templateed)"></i></a></h3>
+        <h3 class="card-title">Hard Skills <a href="#" class="icon3"*ngIf="isLogged"><i class="fa fa-plus" (click)="openModal(templatesk)"></i></a></h3>
         </div>
         <div class="s">
           <h4 class="example-h2"></h4>              
@@ -133,12 +133,11 @@
                 [lazy]="false" 
                 ></circle-progress>
                 <div>
-                  <a href="#" class="icon3 sk1"><i class="fa fa-pencil" (click)="openModal(template)"></i></a>
-                <a href="#" class="icon4 sk1"><i class="fa fa-trash" (click)="openModal(template)"></i></a>
+                                 <a href="#" class="icon4 sk1"*ngIf="isLogged"><i class="fa fa-trash" (click)="openModal(templateskdel)"></i></a>
                 </div>
               
       
-                <ng-template #template>
+                <ng-template #templatesked>
                   <form>
                     <div class="modal-header">
                       <h4 class="modal-title pull-left">Editar Skills</h4>
@@ -162,7 +161,7 @@
         
         
         
-                <ng-template #template>
+                <ng-template #templateskdel>
                   <form>
                     <div class="modal-header">
                       <h4 class="modal-title pull-left">Eliminar Skill</h4>
@@ -207,7 +206,7 @@
 
 
 
-        <ng-template #templateed>
+        <ng-template #templatesk>
           <form>
             <div class="modal-header">
               <h4 class="modal-title pull-left">Agregar Skill</h4>
